@@ -1,4 +1,4 @@
-// CCO '14 P1 - Troyangles]
+// CCO '14 P1 - Troyangles
 
 #include<iostream>
 using namespace std;

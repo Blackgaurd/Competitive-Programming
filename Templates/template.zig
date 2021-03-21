@@ -8,31 +8,33 @@ var _i0: u32 = 0;
 var _o0: u32 = 0;
 var __ = [1]u8{0}**11 ++ [1]u8{'\n'};
 
-inline fn sc()u8{
+inline fn sc() u8{
     _i0+=1;
     return _i[_i0-1];
 }
-inline fn su32()u32{
+inline fn su32() u32{
     var x:u32=sc()-48;
     var _c=sc();
     while(_c>47){
-        x=x*10+_c-48;
+        x=(x<<3)+(x<<1)+_c-48;
         _c=sc();
     }
     return x;
 }
-inline fn si32()i32{
-    if(_i[_i0]=='-'){
-        _i0+=1;
-        return -@intCast(i32, su32());
+inline fn su64() u64{
+    var x:u64=sc()-48;
+    var _c=sc();
+    while(_c>47){
+        x=(x<<3)+(x<<1)+_c-48;
+        _c=sc();
     }
-    return @intCast(i32, su32());
+    return x;
 }
 inline fn pc(c:u8)void{
     _i[_o0]=c;
     _o0+=1;
 }
-inline fn pu32(y:u32)void{
+inline fn pu64(y:u64)void{
     var i:u8=10;
     __[10]=@intCast(u8,y%10+48);
     var x=y/10;
@@ -46,21 +48,14 @@ inline fn pu32(y:u32)void{
         _o0+=12-i;
     }
 }
-inline fn pi32(y:i32)void{
-    if(y<0){
-        pc('-');
-        pu32(@intCast(u32,-y));
-    }
-    else pu32(@intCast(u32,y));
-}
 
 pub fn main() !void {
     @setRuntimeSafety(false);
     const stdin = std.io.getStdIn().inStream();
     const stdout = std.io.getStdOut().outStream();
-    _ = try stdin.readAll(&_i);
+    var _iii = stdin.readAll(&_i) catch unreachable;
 
+    
 
-
-    try stdout.writeAll(_i[0.._o0]);
+    var _iiii = stdout.writeAll(_i[0.._o0]) catch unreachable;
 }
