@@ -1,2 +1,0 @@
-
-    string cop = t;
