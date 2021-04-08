@@ -1,8 +1,8 @@
 // CCC '00 S4 - Golf
 
-#include<stdio.h>
+#include<cstdio>
 #include<algorithm>
-#include<string.h>
+#include<cstring>4
 
 int dis, n, dp[5300];
 int main(){

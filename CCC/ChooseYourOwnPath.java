@@ -1,3 +1,5 @@
+// CCC '18 J5 - Choose your own path
+
 import java.util.*;
 import java.io.*;
 public class ChooseYourOwnPath {

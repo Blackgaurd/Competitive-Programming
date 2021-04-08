@@ -1,5 +1,6 @@
-#include<bits/stdc++.h>
-using namespace std;
+// CCC '21 J1 - Boiling Water
+
+#include<cstdio>
 
 int b;
 int main(){

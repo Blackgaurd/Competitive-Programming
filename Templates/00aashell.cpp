@@ -22,36 +22,41 @@ template<typename T> void sc2(T &x){x = 0;bool _=0;T c=gc;_=c==45;c=_?gc:c;while
 template<typename T, typename...A> void sc2(T&t, A&...a){sc2(t);sc2(a...);}
 
 #define ms(arr, val) memset(arr, val, sizeof(arr))
-#define watchd(x) cout << (#x) << ": " << (x) << '\n'
-template<typename T, typename...A> void watch(T&t, A&...a) {watchd(t); watchd(a...);}
-#define ull unsigned long long
+#define watch(x) cout << (#x) << ": " << (x) << '\n'
 
 #define iosync ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0)
+
+typedef long long ll;
+typedef unsigned long long ull;
+typedef pair<int, int> pii;
+typedef vector<int> vi;
+typedef deque<int> qi;
 
 #define nl '\n'
 #define ll long long
 #define ull unsigned long long
 
-ull mul_mod(ull a, ull b, ull m=ULLONG_MAX) { // a*b%m
-    ull r = 0;
+ull mul_mod(ull a, ull b, ull mod=ULLONG_MAX) { // a*b%m
+    ull ret = 0;
     while (a > 0) {
         if (a & 1)
-            if((r += b) > m) r %=m;
+            if((ret += b) > mod) ret %=mod;
         a >>= 1;
-        if ((b <<= 1) > m) b %= m;
+        if ((b <<= 1) > mod) b %= mod;
     }
-    return r;
+    return ret;
 }
 
-ull qpow(ull a, ull n, ull m=ULLONG_MAX) { // (a^n)%m
-    ull r = 1;
+ull qpow(ull a, ull n, ull mod=ULLONG_MAX) { // (a^n)%m
+    if (!n) return 1;
+    ull ret = 1;
     while (n > 0) {
         if (n & 1)
-            r = mul_mod(r, a, m);
-        a = mul_mod(a, a, m);
+            ret = mul_mod(ret, a, mod);
+        a = mul_mod(a, a, mod);
         n >>= 1;
     }
-    return r;
+    return ret;
 }
 
 int p[1];

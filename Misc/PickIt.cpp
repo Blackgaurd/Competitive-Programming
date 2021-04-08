@@ -1,36 +1,30 @@
 // Pick It
 
-#include <bits/stdc++.h>
-using namespace std;
+#include<cstdio>
+#include<algorithm>
+#include<string.h>
 
-#pragma GCC optimize ("Ofast")
-#pragma GCC target ("avx2")
-#define scan(x) do{while((x=getchar())<'0'); for(x-='0'; '0'<=(_=getchar()); x=(x<<3)+(x<<1)+_-'0');}while(0)
+#define su(x) do{while((x=getchar())<'0'); for(x-='0'; '0'<=(_=getchar()); x=(x<<3)+(x<<1)+_-'0');}while(0)
 char _;
-#define ms memset
-#define pb push_back
-#define nl "\n"
-using ll = long long;
-using ull = unsigned long long;
-using pii = pair<int, int>;
-using vi = vector<int>;
-using vll = vector<ll, ll>;
-using qi = deque<int>;
-using qpii = deque<pii>;
 
+const int MM = 203;
+int arr[MM], dp[MM][MM];
 int main(){
-    ios_base::sync_with_stdio(0);
-    cin.tie(nullptr);
     while (true){
-        int n; scan(n);
-        vi arr, sum;
-        if (n==0) break;
-        for (int i=0; i<n; i++){int a; scan(a); arr.pb(a);}
-        sum.pb(arr[0]+arr[1]);
-        for (int i=1; i<n-1; i++){
-            sum.pb(arr[i-1]+arr[i]+arr[i+1]);
+        int n; su(n);
+        if (!n) break;
+        memset(arr, 0, sizeof(arr));
+        memset(dp, 0, sizeof(dp));
+        for (int i=1; i<=n; i++) su(arr[i]);
+        for (int len=2; len<n; len++){
+            for (int i=1; i+len<=n; i++){
+                int j=i+len;
+                for (int mid=i+1; mid<j; mid++){
+                    dp[i][j] = std::max(dp[i][j], arr[i] + arr[mid] + arr[j] + dp[i][mid] + dp[mid][j]);
+                }
+            }
         }
-        sum.pb(arr[n-1]+arr[n-2]);
+        printf("%d\n", dp[1][n]);
     }
 
     return 0;

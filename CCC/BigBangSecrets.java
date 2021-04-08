@@ -1,3 +1,5 @@
+// CCC '12 J4 - Big Bang Secrets
+
 import java.util.*;
 import java.io.*;
 public class BigBangSecrets {
@@ -5,11 +7,12 @@ public class BigBangSecrets {
 	static StringTokenizer st;
 	public static void main(String[] args) throws IOException{
 		int k = readInt();
-		char c[] = readLine().toCharArray(), a[] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
-		for (int p=1; p<=c.length; p++) {
-			int x = (c[p-1]+(3*p+k-65))%26;
-			char t = a[x];
-			System.out.println(t+" "+((c[p-1]+(3*p+k-65))%26));
+		char t[] = readLine().toCharArray();
+		for (int p=0; p<t.length; p++){
+			int c = t[p] - 'A' + 1;
+			c -= (p+1)*3+k;
+			while (c <= 0) c += 26;
+			System.out.print((char)(c+'A'-1));
 		}
 	}
 	static String next () throws IOException {

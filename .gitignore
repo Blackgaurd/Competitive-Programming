@@ -1,5 +1,21 @@
+pyvenv.cfg
+
 # vscode
 .vscode
 
+# compiled files
+*.exe
+*.class
+
 # intellij
 .idea
+CMakeLists.txt
+cmake-build-debug
+Include
+
+# test and temporary files
+test.cpp
+test.c
+test.py
+test.java
+

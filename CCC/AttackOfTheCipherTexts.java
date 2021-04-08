@@ -1,3 +1,5 @@
+// CCC '06 S2 - Attack of the CipherTexts
+
 import java.util.*;
 public class AttackOfTheCipherTexts {
 
