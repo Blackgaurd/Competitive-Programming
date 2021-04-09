@@ -1,4 +1,5 @@
 Scripts/
+Templates/__pycache__/
 
 # vscode
 .vscode
