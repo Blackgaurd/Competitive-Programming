@@ -1,3 +1,5 @@
+//
+
 import java.io.*;
 import java.util.*;
 public class aaaaareader {
@@ -29,7 +31,7 @@ public class aaaaareader {
             while (nxt != -1){
                 ans *= 10; ans += nxt - '0';
                 nxt = nextByte();
-            } 
+            }
             return neg ? -ans : ans;
         }
         long readLong() throws IOException {

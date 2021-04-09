@@ -1,57 +1,53 @@
-//
+// Another Contest 7 Problem 3 - Network Connections
 
-#include <bits/stdc++.h>
+#include<cstdio>
+#include<vector>
+#include<algorithm>
 using namespace std;
 
 #define scan(x) do{while((x=getchar())<'0'); for(x-='0'; '0'<=(_=getchar()); x=(x<<3)+(x<<1)+_-'0');}while(0)
 char _;
-#define pb push_back
-using pii = pair<int, int>;
-using vi = vector<int>;
+
+struct edge{
+    int u, v, w;
+    bool operator < (edge const& other){
+        return w < other.w;
+    }
+};
 
 const int MM = 1e5+5;
-int n, m, f[MM], ans = 0;
-vector<pii> adj[MM];
-unordered_map<int, set<int>> ctd;
-priority_queue<pii, vector<pii>, greater<pii>> q;
+int n, m, f[MM], p[MM], ans = 0;
+vector<edge> adj;
 bool vis[MM];
+int flead(int x){
+    if (p[x]!=x) p[x] = flead(p[x]);
+    return p[x];
+}
 int main(){
-    ios_base::sync_with_stdio(0);
-    cin.tie(nullptr);
-
     scan(n); scan(m);
-    for (int i=1; i<=n; i++) scan(f[i]);
+    for (int i=1; i<=n; i++) {
+        p[i] = i;
+        scan(f[i]);
+        if (i != 1)
+            adj.push_back({i, i-1, f[i]-f[i-1]});
+    }
 
     for (int i=1; i<=m; i++){
         int a, b; scan(a); scan(b);
-        adj[a].pb(make_pair(0, b));
-        adj[b].pb(make_pair(0, a));
-        ctd[a].insert(b); ctd[b].insert(a);
+        if (flead(a) != flead(b))
+            p[flead(a)] = flead(b);
     }
 
-    for (int i=1; i<=n; i++){
-        for (int j=i+1; j<=n; j++){
-            if (ctd[i].count(j) == 0){
-                adj[i].pb(make_pair(abs(f[i]-f[j]), j));
-                adj[j].pb(make_pair(abs(f[i]-f[j]), i));
-            }
+    sort(adj.begin(), adj.end());
+
+    for (edge cur: adj){
+        if (flead(cur.u) != flead(cur.v)){
+            ans += cur.w;
+            p[flead(cur.u)] = flead(cur.v);
         }
     }
-    q.push(make_pair(0, 1));
-    while (m <= n && !q.empty()){
-        int weight = q.top().first, cur = q.top().second;
-        q.pop();
-        if (!vis[cur]){
-            //cout << cur << nl;
-            vis[cur] = true;
-            ans += weight;
-            m++;
-            for (auto nxt: adj[cur]){
-                q.push(nxt);
-            }
-        }
-    }
-    cout << ans << '\n';
+
+    printf("%d\n", ans);
 
     return 0;
 }

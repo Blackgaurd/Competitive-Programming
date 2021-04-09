@@ -1,4 +1,4 @@
-// 
+//
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -36,33 +36,33 @@ typedef deque<int> qi;
 #define ll long long
 #define ull unsigned long long
 
-ull mul_mod(ull a, ull b, ull mod=ULLONG_MAX) { // a*b%m
-    ull ret = 0;
-    while (a > 0) {
-        if (a & 1)
-            if((ret += b) > mod) ret %=mod;
-        a >>= 1;
-        if ((b <<= 1) > mod) b %= mod;
+ull mul_mod(ull __a, ull __b, ull __mod=ULLONG_MAX) { // __a * __b % __mod
+    ull __ret = 0;
+    while (__a > 0) {
+        if (__a & 1)
+            if((__ret += __b) > __mod) __ret %=__mod;
+        __a >>= 1;
+        if ((__b <<= 1) > __mod) __b %= __mod;
     }
-    return ret;
+    return __ret;
 }
 
-ull qpow(ull a, ull n, ull mod=ULLONG_MAX) { // (a^n)%m
-    if (!n) return 1;
-    ull ret = 1;
-    while (n > 0) {
-        if (n & 1)
-            ret = mul_mod(ret, a, mod);
-        a = mul_mod(a, a, mod);
-        n >>= 1;
+ull qpow(ull __a, ull __exp, ull __mod=ULLONG_MAX) { // (__a ^ __exp) % __mod
+    if (!__exp) return 1;
+    ull __ret = 1;
+    while (__exp > 0) {
+        if (__exp & 1)
+            __ret = mul_mod(__ret, __a, __mod);
+        __a = mul_mod(__a, __a, __mod);
+        __exp >>= 1;
     }
-    return ret;
+    return __ret;
 }
 
 int p[1];
-int flead(int x){
-    if (p[x]!=x) p[x] = flead(p[x]);
-    return p[x];
+int flead(int __x){
+    if (p[__x]!=__x) p[__x] = flead(p[__x]);
+    return p[__x];
 }
 
 int main(){

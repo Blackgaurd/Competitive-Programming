@@ -111,7 +111,7 @@ template<typename T, typename...A> void sc2(T&t, A&...a){sc2(t);sc2(a...);}
 //----- cin fast IO -----//
 
 
-// remeber: only use one io template, dont mix and match
+// remember: only use one io template, dont mix and match
 int main(){
     int a; 
     io > a;
