@@ -2,7 +2,7 @@
 
 import java.io.*;
 import java.util.*;
-public class aaaaareader {
+public class IOjavareader {
     final static Reader rd = new Reader();
     public static void main(String[] args) throws IOException {
     }

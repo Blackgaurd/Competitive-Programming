@@ -1,3 +1,5 @@
+# CCC '15 J4 - Wait Time
+
 import sys
 input = sys.stdin.readline
 

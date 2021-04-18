@@ -1,3 +1,5 @@
+// CCC '13 S4 - Who is Taller?
+
 import java.util.*;
 import java.io.*;
 public class WhoIsTaller {

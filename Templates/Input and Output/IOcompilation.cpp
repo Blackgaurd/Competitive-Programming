@@ -1,4 +1,4 @@
-//----- MIT IO -----//
+//----- Fast IO -----//
 #include <bits/stdc++.h>
 #include <unistd.h>
 #pragma GCC optimize ("Ofast")
@@ -42,7 +42,7 @@ __1(>=,char,s=' ';while(s<=' ')s=gc()) __1(>,string,_nt(s)) __1(>,ld,_nd(s)) __1
 __1(<,const int,write_int(s)) __1(<,const ll,write_int(s)) __1(<,const ld,p_str(to_string(s));) __1(<,const string,p_str(s);)
 __1(<,const char,pc(s);)IO(){if(line_buf){std::istream::sync_with_stdio(false);cin.tie(nullptr);}
 else{setvbuf(stdin,nullptr,_IONBF,0);}setvbuf(stdout, nullptr, _IONBF, 0);}}io;
-#ifdef __MINGW32__ 
+#ifdef __MINGW32__
 #pragma clang diagnostic pop
 const bool IO::line_buf = true;
 #else
@@ -58,64 +58,13 @@ const bool IO::line_buf = false;
 // io > a;
 // io < a;
 
-//!NOTE: io may not work on usaco or other contests
-
-//----- MIT IO -----//
-
-
-//----- default fast IO -----//
-#define sc(x) do{while((x=getchar())<48); for(x-=48; 48<=(_=getchar()); x=(x<<3)+(x<<1)+_-48);}while(0)
-char _;
-
-// default fast io instructions
-// sc(x)
-// x has to be unsigned integer
-
-//----- default fast IO -----//
-
-
-//----- buffed fast IO -----//
-#define getchar() (*_pinp?*_pinp++:(_inp[fread(_pinp=_inp, 1, 4096, stdin)]='\0', *_pinp++))
-char _inp[4097], *_pinp=_inp;
-#define scan(x) do{while((x=getchar())<'-'); _ssign=x=='-'; if(_ssign) while((x=getchar())<'0'); for(x-='0'; '0'<=(_=getchar()); x=(x<<3)+(x<<1)+_-'0'); x=_ssign?-x:x;}while(0)
-char _; bool _ssign;
-
-// buffed fast io instructions
-// scan(x)
-// x has to be unsigned integer
-// can not be used alongside default fast io
-
-//----- buffed fast IO -----//
-
-
-//----- multi fast IO -----//
-#define gc getchar_unlocked()
-template<typename T> void sc2(T &x){x = 0;bool _=0;T c=gc;_=c==45;c=_?gc:c;while(c<48||c>57)c=gc;for(;c<48||c>57;c=gc);for(;c>47&&c<58;c=gc)x=(x<<3)+(x<<1)+(c&15);x=_?-x:x;}
-template<typename T, typename...A> void sc2(T&t, A&...a){sc2(t);sc2(a...);}
-
-// multi fast io instructions
-// sc2(a, b, c ...)
-// can be used with multiple unsigned integers
-// can not be used alongside any other io
-
-//----- multi fast IO -----//
-
-
-//----- cin fast IO -----//
-// ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
-
-// add to top of main()
-// use cin and cout as normal
-// do not use scanf 
-
-//----- cin fast IO -----//
-
+//!Warning: dont use this on contests
 
 // remember: only use one io template, dont mix and match
 int main(){
-    int a; 
+    int a;
     io > a;
     io < a;
-    
+
     return 0;
 }

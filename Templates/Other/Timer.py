@@ -1,7 +1,4 @@
 import time
-import sys
-import io
-import os
 
 def timer(func):
     def wrapper(*args, **kwargs):

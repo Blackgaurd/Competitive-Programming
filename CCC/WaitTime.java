@@ -1,3 +1,5 @@
+// CCC '15 J4 - Wait Time
+
 import java.util.*;
 import java.io.*;
 public class WaitTime {

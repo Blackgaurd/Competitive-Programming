@@ -1,32 +1,33 @@
 // ECOO '16 R3 P3 - CamelCase
+// Optimized
 
 #include<bits/stdc++.h>
 using namespace std;
 
-int n, dp[2003][2003];
-set<string> dict;
+const int MM = 2003;
+int n, dp[MM];
+set<string> dict[26];
 int main(){
     ios_base::sync_with_stdio(0);
     cin.tie(0); cout.tie(0);
     cin >> n;
     for (int i=0; i<n; i++){
         string t; cin >> t;
-        dict.insert(t);
+        dict[t[0]-'a'].insert(t);
     }
     for (int e=0; e<10; e++){
         string t; cin >> t;
         memset(dp, 0x3f3f3f3f, sizeof(dp));
-
+        dp[0] = 0;
         for (int i=1; i<=t.length(); i++){
-            for (int l=1; l<=i; l++){
-                if (dict.find(t.substr(i-l, l)) != dict.end())
-                    dp[i-l][i-1] = 1;
-
-                if (i-l > 0)
-                    dp[0][i-1] = min(dp[0][i-1], dp[0][i-l-1] + dp[i-l][i-1]);
+            for (int j=i-1; j>=0; j--){
+                string word = t.substr(j, i-j);
+                if (dict[word[0]-'a'].count(word)){
+                    dp[i] = min(dp[i], dp[j]+1);
+                }
             }
         }
-        cout << dp[0][t.length()-1] - 1 << '\n';
+        cout << dp[t.length()] - 1 << '\n';
     }
 
     return 0;

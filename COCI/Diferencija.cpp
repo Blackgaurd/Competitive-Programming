@@ -1,7 +1,7 @@
-// CCC '15 S3 - Gates
+// COCI '10 Contest 3 #5 Diferencija
 
-#include <bits/stdc++.h>
-using namespace std;
+#include<cstdio>
+#include<algorithm>
 
 #ifndef WIN32
 #define getchar getchar_unlocked
@@ -11,21 +11,21 @@ using namespace std;
 #define sc(x) do{while((x=getchar())<33);}while(0)
 char _; bool _sign;
 
-// 1 = open, 0 = taken
-int g, p, ans = 0;
-bitset<(int)1e5+3> gates;
+const int MM = 3e5+3;
+int n, arr[MM];
+long long ans = 0;
 int main(){
-    gates.flip();
-    su(g); su(p);
-    for (int i=0; i<p; i++){
-        int a; su(a);
-        int ind = gates._Find_next(g-a-1);
-        if (ind == g){
-            printf("ans: %d\n", i);
-            return 0;
+    su(n);
+    for (int i=1; i<=n; i++) su(arr[i]);
+    for (int i=1; i<=n; i++){
+        int mx = arr[i], mn = arr[i];
+        for (int j=i+1; j<=n; j++){
+            mx = std::max(mx, arr[j]);
+            mn = std::min(mn, arr[j]);
+            ans += (mx - mn);
         }
-        gates[ind] = 0;
     }
-    printf("ans: %d\n", p);
+    printf("%lld\n", ans);
+
     return 0;
 }

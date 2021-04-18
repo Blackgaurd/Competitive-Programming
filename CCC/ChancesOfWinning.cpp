@@ -1,8 +1,7 @@
-// CCC '15 S3 - Gates
+// CCC '13 S3 - Chances of Winning
 
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-
 #ifndef WIN32
 #define getchar getchar_unlocked
 #endif
@@ -11,21 +10,22 @@ using namespace std;
 #define sc(x) do{while((x=getchar())<33);}while(0)
 char _; bool _sign;
 
-// 1 = open, 0 = taken
-int g, p, ans = 0;
-bitset<(int)1e5+3> gates;
+int t, g, points[5], played[5], ans;
 int main(){
-    gates.flip();
-    su(g); su(p);
-    for (int i=0; i<p; i++){
-        int a; su(a);
-        int ind = gates._Find_next(g-a-1);
-        if (ind == g){
-            printf("ans: %d\n", i);
-            return 0;
+    su(t); su(g);
+    ans = pow(3, 6-g);
+    for (int i=0; i<g; i++){
+        int a, b, sa, sb;
+        su(a); su(b); su(sa); su(sb);
+        if (sa > sb) points[a] += 2;
+        else if (sb > sa) points[b] += 2;
+        else {
+            points[a]++;
+            points[b]++;
         }
-        gates[ind] = 0;
+        played[a]++;
+        played[b]++;
     }
-    printf("ans: %d\n", p);
+
     return 0;
 }

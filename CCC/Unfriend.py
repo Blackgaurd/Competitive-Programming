@@ -1,3 +1,5 @@
+# CCC '11 J5 - Unfriend
+
 import sys
 from itertools import combinations
 

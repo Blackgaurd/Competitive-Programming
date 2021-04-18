@@ -1,3 +1,5 @@
+# CCC '96 S4 - When in Rome
+
 import sys
 
 input = sys.stdin.readline
