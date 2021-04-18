@@ -15,7 +15,4 @@
 #a=input
 #for i in range(int(a())):print(len(str(abs(int(a())))))
 
-sol = """a=input
-for i in range(int(a())):print(len(str(abs(int(a())))))"""
-
-print(len(sol))
+# pick any of the solutions, they all work
