@@ -1,18 +1,18 @@
 
 # Competitive-Programming
 
-Files are sorted by contest names.
+It's easier than it looks.
 
-Most of the problems are ones found on dmoj.ca
+I can't guarantee that every solution will give full points.
 
-It is not guaranteed that all files will give a passing solution on dmoj.
+## DMOJ
 
----
+Problems found on dmoj.ca. Problems are grouped by contest. The 'Misc' folder holds any problem that I either forgot to organize or is not part of a contest.
 
-Some of the java files may not have their names match up with the class name. This is due to renaming for organization. If you stumble upon one of these files, please raise an issue.
+## Codeforces
 
----
+Problems found on codeforces.com. Problems are named according to their number on the website. Until I find a better way to organize these I will follow this convention.
 
-Currently working on putting problem names at the top of all CCC problems, and checking to see if they work.
+## Contact Me!
 
-Next step will be to organize by year.
+Discord: **kiwi123#9403**

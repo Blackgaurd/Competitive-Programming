@@ -1,5 +1,6 @@
 Scripts/
 Templates/__pycache__/
+Templates/Debugger/
 
 # vscode
 .vscode
@@ -14,13 +15,5 @@ CMakeLists.txt
 cmake-build-debug
 Include
 
-# test and temporary files
-test.cpp
-test.c
-test.py
-test.java
-
-tempCodeRunnerFile.cpp
-tempCodeRunnerFile.c
-tempCodeRunnerFile.py
-tempCodeRunnerFile.java
+# other files (msg me for user script)
+Other*Things/
