@@ -15,4 +15,4 @@ Problems found on codeforces.com. Problems are named according to their number o
 
 ## Contact Me!
 
-Discord: **kiwi123#9403**
+Discord: **cherry123#9403**

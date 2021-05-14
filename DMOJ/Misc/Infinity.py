@@ -1,0 +1,1 @@
+print("Yes" if int(input(), 16) + int(input(), 16) > int("3f3f3f3f", 16) else "No")
