@@ -1,4 +1,5 @@
 // Dynamic Range Minimum Test
+// minimum seg tree
 
 #include<bits/stdc++.h>
 using namespace std;

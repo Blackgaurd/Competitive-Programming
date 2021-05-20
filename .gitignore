@@ -1,19 +1,15 @@
-Scripts/
 Templates/__pycache__/
 Templates/Debugger/
 
 # vscode
 .vscode
 
+# intellij
+.idea
+
 # compiled files
 *.exe
 *.class
 
-# intellij
-.idea
-CMakeLists.txt
-cmake-build-debug
-Include
-
-# other files (msg me for user script)
+# other files
 Other*Things/
