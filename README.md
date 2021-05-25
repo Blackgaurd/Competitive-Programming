@@ -1,7 +1,11 @@
 
 # Competitive-Programming
 
-[![](https://tokei.rs/b1/github/XAMPPRocky/tokei?category=files)](https://github.com/XAMPPRocky/tokei)
+[![](https://tokei.rs/b1/github/Blackgaurd/Competitive-Programming)](https://github.com/Blackgaurd/Competitive-Programming)
+[![](https://tokei.rs/b1/github/Blackgaurd/Competitive-Programming?category=code)](https://github.com/Blackgaurd/Competitive-Programming)
+[![](https://tokei.rs/b1/github/Blackgaurd/Competitive-Programming?category=files)](https://github.com/Blackgaurd/Competitive-Programming)
+
+500+ competitive programming solutions with 20, 000+ lines of code in mainly C++, Python, and Java.
 
 ## DMOJ
 
