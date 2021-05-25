@@ -1,6 +1,3 @@
-Templates/__pycache__/
-Templates/Debugger/
-
 # vscode
 .vscode
 
@@ -13,3 +10,4 @@ Templates/Debugger/
 
 # other files
 Other*Things/
+Templates/

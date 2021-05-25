@@ -1,7 +1,7 @@
 
 # Competitive-Programming
 
-Spending way too much time on this.
+[![](https://tokei.rs/b1/github/XAMPPRocky/tokei?category=files)](https://github.com/XAMPPRocky/tokei)
 
 ## DMOJ
 
