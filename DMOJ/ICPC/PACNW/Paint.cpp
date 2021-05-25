@@ -10,20 +10,23 @@ using namespace std;
 #define sc(x) do{while((x=getchar())<33);}while(0)
 char _; bool _sign;
 typedef long long ll;
-typedef pair<ll, ll> pll;
 
-const int MM = 2e5+3;
-int n;
-ll k, dp[MM];
-vector<pll> arr;
-bool comp(pll a, pll b){
-    return a.second < b.second;
-}
-int binlower(int hi, ll x){
-    int lo = 0, ind = -1;
+struct trp{
+    ll s, f, w;
+    trp(ll a, ll b){
+        s = a;
+        f = b;
+        w = b - a + 1;
+    }
+    bool operator < (const trp& other) const {return f < other.f;}
+};
+ll n, k, dp[(int)2e5+3];
+vector<trp> arr;
+int binlower(ll x){
+    int lo = 0, hi = k, ind = 0;
     while (lo <= hi){
         int mid = (lo + hi) / 2;
-        if (arr[mid].second >= x) hi = mid - 1;
+        if (arr[mid].f > x) hi = mid - 1;
         else {
             ind = mid;
             lo = mid + 1;
@@ -33,22 +36,17 @@ int binlower(int hi, ll x){
 }
 int main(){
     su(n); su(k);
-    for (int i=0; i<k; i++){
-        ll a, b; su(a); su(b);
+    arr.emplace_back(1, 0);
+    for (ll i=0, a, b; i<k; i++){
+        su(a); su(b);
         arr.emplace_back(a, b);
     }
-    sort(arr.begin(), arr.end(), comp);
-    for (int i=0; i<k; i++){
-        int ind = binlower(i-1, arr[i].first);
-        if (ind == -1){
-            dp[i] = arr[i].second - arr[i].first + 1;
-        }
-        else {
-            dp[i] = max(dp[i-1], dp[ind] + arr[i].second - arr[i].first + 1);
-        }
-        //cout << dp[i] << '\n';
+    sort(arr.begin(), arr.end());
+    for (int i=1; i<=k; i++){
+        int ind = binlower(arr[i].s);
+        dp[i] = max(dp[i-1], dp[ind] + arr[i].w);
     }
-    printf("%lld\n", n - dp[k-1]);
+    printf("%lld\n", n - dp[k]);
 
     return 0;
 }
