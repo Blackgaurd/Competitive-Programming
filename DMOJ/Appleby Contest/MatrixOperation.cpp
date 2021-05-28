@@ -2,55 +2,42 @@
 
 #include <bits/stdc++.h>
 using namespace std;
+#ifdef ONLINE_JUDGE
+#define getchar getchar_unlocked
+#endif
+#define su(x) do{while((x=getchar())<48); for(x-=48; 48<=(_=getchar()); x=(x<<3)+(x<<1)+_-48);}while(0)
+#define si(x) do{while((x=getchar())<45); _sign=x==45; if(_sign) while((x=getchar())<48); for(x-=48; 48<=(_=getchar()); x=(x<<3)+(x<<1)+_-48); x=_sign?-x:x;}while(0)
+#define sc(x) do{while((x=getchar())<33);}while(0)
+char _; bool _sign;
 
-#pragma GCC optimize ("Ofast")
-#pragma GCC target ("avx2")
-#define ms memset
-#define pb push_back
-#define nl "\n"
-using ll = long long;
-using ull = unsigned long long;
-using pii = pair<int, int>;
-using vi = vector<int>;
-using vll = vector<ll, ll>;
-using qi = deque<int>;
-using qpii = deque<pii>;
-
-const int MM = 1500;
-int n, arr[MM][MM], maxdis = 0, lvl = 0;
-int dx[] = {-1,1,0,0}, dy[] = {0,0,-1,1};
-bool vis[MM][MM];
-
-void dfs(int x, int y){
-    vis[x][y] = true;
+const int MM = 1503;
+int n, arr[MM][MM], dp[MM][MM], ans = 0, dx[] = {-1, 1, 0, 0}, dy[] = {0, 0, -1, 1};
+int dfs(int x, int y){
+    if (dp[x][y] != 0) return dp[x][y];
+    bool flag = false;
     for (int i=0; i<4; i++){
-        if (x+dx[i]>=1 && x+dx[i]<=n && y+dy[i]>=1 && y+dy[i]<=n){
-            if (!vis[x+dx[i]][y+dy[i]] && arr[x+dx[i]][y+dy[i]]>arr[x][y]){
-                maxdis = max(maxdis, lvl++);
-                dfs(x+dx[i], y+dy[i]);
-                lvl--;
-                vis[x+dx[i]][y+dy[i]] = false;
-            }
+        int nx = x + dx[i], ny = y + dy[i];
+        if (arr[nx][ny] > arr[x][y]){
+            dp[x][y] = max(dp[x][y], dfs(nx, ny) + 1);
+            flag = true;
         }
     }
+    if (flag) return dp[x][y];
+    else return dp[x][y] = 1;
 }
-
 int main(){
-    ios_base::sync_with_stdio(0);
-    cin.tie(nullptr);
-    cin >> n;
+    su(n);
     for (int i=1; i<=n; i++){
         for (int j=1; j<=n; j++){
-            cin >> arr[i][j];
+            su(arr[i][j]);
         }
     }
     for (int i=1; i<=n; i++){
         for (int j=1; j<=n; j++){
-            dfs(i, j);
-            vis[i][j] = false;
+            ans = max(ans, dfs(i, j));
         }
     }
-    cout << maxdis+1;
+    printf("%d\n", ans - 1);
 
     return 0;
 }

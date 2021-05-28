@@ -10,63 +10,55 @@ using namespace std;
 #define sc(x) do{while((x=getchar())<33);}while(0)
 char _; bool _sign;
 typedef pair<int, int> pii;
-#define watch(x) cout << (#x) << ": " << x << '\n'
 
-const int MM = 1501;
-int n, m, dx[] = {-1, 1, 0, 0}, dy[] = {0, 0, -1, 1};
-bool arr[MM][MM], vis[MM][MM];
-bool fit(int curx, int cury, int x){
-    x--;
-    if (vis[curx][cury]) return false;
-    if (curx <= 0 || cury <= 0) return false;
-    if (curx + x > n || cury + x > m) return false;
-    for (int i=0; i<=x; i++){
-        if (arr[curx+i][cury] || arr[curx+i][cury+x]) return false;
-        if (arr[curx][cury+i] || arr[curx+x][cury+i]) return false;
-    }
-    return true;
+const int MM = 1503;
+int n, m, psa[MM][MM], dx[] = {-1, 1, 0, 0}, dy[] = {0, 0, -1, 1};
+bool vis[MM][MM];
+bool check(int nx, int ny, int x){
+    if (nx <= 0 || ny <= 0 || nx + x > n || ny + x > m) return false;
+    if (vis[nx][ny]) return false;
+    return (psa[nx+x][ny+x] - psa[nx-1][ny+x] - psa[nx+x][ny-1] + psa[nx-1][ny-1] == 0);
 }
 bool bfs(int x){
-    cout << "bfs\n";
-    if (!fit(1, 1, x)) return false;
-    deque<pii> q = {{1, 1}};
+    x--;
+    deque<pii> q;
     memset(vis, false, sizeof(vis));
-    vis[1][1] = true;
+    if (check(1, 1, x)){
+        q.emplace_back(1, 1);
+        vis[1][1] = true;
+    }
     while (!q.empty()){
-        pii cur = q.front();
+        int curx = q.front().first, cury = q.front().second;
         q.pop_front();
-        //printf("(%d, %d)\n", cur.first, cur.second);
         for (int i=0; i<4; i++){
-            int nx = cur.first + dx[i], ny = cur.second + dy[i];
-            if (fit(nx, ny, x)){
-                q.emplace_back(nx, ny);
+            int nx = curx + dx[i], ny = cury + dy[i];
+            if (check(nx, ny, x)){
                 vis[nx][ny] = true;
+                q.emplace_back(nx, ny);
             }
         }
     }
-    return vis[n-x+1][m-x+1];
+    return vis[n-x][m-x];
 }
 int main(){
     su(n); su(m);
     for (int i=1; i<=n; i++){
         for (int j=1; j<=m; j++){
             char c; sc(c);
-            arr[i][j] = (c == 'X');
+            psa[i][j] = (c == 'X');
+            psa[i][j] += psa[i-1][j] + psa[i][j-1] - psa[i-1][j-1];
         }
     }
-    int lo = 1, hi = min(n, m), ans = 1;
+    int lo = 1, hi = min(n, m), ans = 0;
     while (lo <= hi){
         int mid = (lo + hi) / 2;
-        cout << mid << '\n';
         if (bfs(mid)){
-            cout << "check\n";
             ans = mid;
             lo = mid + 1;
         }
         else hi = mid - 1;
     }
     printf("%d\n", ans);
-    //cout << bfs(3) << '\n';
 
     return 0;
 }

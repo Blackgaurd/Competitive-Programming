@@ -21,7 +21,6 @@ public class BridgesInAGraph {
 			}
 			dfs (adj, 1, -1);
 			System.out.println(bridges);
-			
 		}
 	}
 	static void dfs(ArrayList<Integer> adj[], int v, int p) {
