@@ -26,6 +26,7 @@ int main(){
                     p[flead(i)] = flead(j);
         }
     }
+    for (int i=1; i<=n; i++) flead(i);
     for (int i=1; i<=n; i++){
         if (!p[i]) continue;
         printf("%d ", i);

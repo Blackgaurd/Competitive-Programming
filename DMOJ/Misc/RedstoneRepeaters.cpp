@@ -4,7 +4,6 @@
 using namespace std;
 #define sc(x) do{while((x=getchar())<48); for(x-=48; 48<=(_=getchar()); x=(x<<3)+(x<<1)+_-48);}while(0)
 char _;
-#define watch(x) cout << (#x) << ": " << (x) << '\n'
 
 int n, e, cycle = 0;
 vector<int> adj[1003];
@@ -23,14 +22,12 @@ int main(){
         int a, b; sc(a); sc(b);
         adj[a].push_back(b);
     }
-    for (int i=1; i<=n; i++) {dfs(i, i);}
-    watch(cycle);
+    for (int i=1; i<=n; i++) dfs(i, i);
     if (cycle){
         if (cycle==1) cout << "Infinite Loop Present\n";
         else cout << "Infinite Loops Present\n";
     }
     else cout << "No Infinite Loops\n";
     
-
     return 0;
 }
