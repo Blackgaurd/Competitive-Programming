@@ -16,3 +16,8 @@
 # other files
 Other*Things/
 Templates/
+DMOJ/HelloWorldHard/network.py
+DMOJ/HelloWorldHard/layers/
+DMOJ/HelloWorldHard/encode.py
+DMOJ/HelloWorldHard/HelloWorld.py
+*.csv
