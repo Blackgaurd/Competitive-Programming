@@ -6,3 +6,5 @@ This problem is quite intuitive and you should be able to solve it with very bas
     <summary>Free answers</summary>
     <a href=https://www.youtube.com/watch?v=RB_y_-J_3kk>Click here</a>
 </details>
+
+(I generated the values in `solution.py` with a very sophisticated RNG and a good handful of luck.)
