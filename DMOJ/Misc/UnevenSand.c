@@ -4,7 +4,7 @@
 #include<string.h>
 
 char str[7];
-long long lo = 1, hi = 1e9;
+long long lo = 1, hi = 2e9;
 int main(){
     while (1){
         long long mid = (lo + hi) / 2;
