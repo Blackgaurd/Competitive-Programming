@@ -12,6 +12,5 @@
 *.exe
 *.class
 
-# other files
-Other*Things/
-Templates/
+# tests
+Tests/
