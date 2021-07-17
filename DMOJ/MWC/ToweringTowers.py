@@ -9,7 +9,7 @@ towers=list(map(int,input().split()))
 stack, ans=[],[]
 output=''
 for i in range(n):
-    while len(stack)>0 and towers[i]>=stack[-1][0]:
+    while stack and towers[i] >= stack[-1][0]:
         stack.pop()
     stack.append((towers[i],i))
     if len(stack)>1:
