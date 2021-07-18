@@ -17,7 +17,7 @@ int main(){
 }
 
 * For use locally don't forget to EOF
-* with ctrl+c to end stdin
+* with ctrl+z to end stdin
 
 */
 

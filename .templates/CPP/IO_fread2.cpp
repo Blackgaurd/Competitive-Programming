@@ -3,7 +3,7 @@
 using namespace std;
 typedef long long ll;
 
-// ==================== INITIALLIZE ====================
+// ==================== INITIALIZE ====================
 #define __LOCAL_USE (false)
 #define __FILE_NAME "data"
 #define __INPUT_SIZE (32000 << 10)
