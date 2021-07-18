@@ -1,6 +1,8 @@
+// List Minimum (Easy)
+
 import java.util.*;
 import java.io.*;
-public class ListMinEasy {
+public class ListMinimumEasy {
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static StringTokenizer st;
 	public static void main(String[] args) throws IOException{

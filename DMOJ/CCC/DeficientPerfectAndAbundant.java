@@ -1,6 +1,6 @@
 import java.util.*;
 import java.io.*;
-public class DefiPerfAbu {
+public class DeficientPerfectAndAbundant {
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static StringTokenizer st;
 	public static void main(String[] args) throws IOException{
@@ -10,7 +10,7 @@ public class DefiPerfAbu {
 			System.out.println(t+" is a"+fun(t)+" number.");
 		}
 	}
-	static String fun(int num) { 
+	static String fun(int num) {
 		int sum = 0;
 		for (int i=1; i<=Math.sqrt(num); i++) {
 			if (num%i==0) {

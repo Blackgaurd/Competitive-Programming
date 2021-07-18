@@ -1,8 +1,7 @@
 import java.util.*;
-public class CCC06J2 {
+public class RollTheDice {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Scanner in = new Scanner(System.in);
 		int d1 = in.nextInt();
 		int d2 = in.nextInt();
@@ -27,5 +26,6 @@ public class CCC06J2 {
 		else {
 			System.out.println("There are 0 ways to get the sum 10.");
 		}
+		in.close();
 	}
 }

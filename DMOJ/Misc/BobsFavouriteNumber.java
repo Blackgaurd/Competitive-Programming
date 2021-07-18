@@ -1,8 +1,9 @@
+// Bob's Favourite Number
+
 import java.util.*;
 public class BobsFavouriteNumber {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Scanner in = new Scanner(System.in);
 		int n = in.nextInt();
 		int count = 0;
@@ -15,6 +16,8 @@ public class BobsFavouriteNumber {
 			}
 		}
 		System.out.print(count);
+
+		in.close();
 	}
 
 }

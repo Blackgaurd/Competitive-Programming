@@ -1,3 +1,5 @@
+// Fibonacci Sequence (Harder)
+
 import java.util.*;
 import java.io.*;
 import java.math.BigInteger;
@@ -11,12 +13,12 @@ public class FibonacciSequenceHarder {
 		BigInteger n = in.nextBigInteger();
 		n = n.mod(pisano);
 		System.out.println(fib(n.intValue()-1));
+		in.close();
 	}
 	static long fib(long n) {
 		if (n<=1) return 1L;
 		if (nums.containsKey(n)) return nums.get(n);
 		nums.put(n, (fib((n-1)/2)*fib((n-2)/2)+fib(n/2)*fib((n+1)/2))%MOD);
 		return nums.get(n);
-		
 	}
 }

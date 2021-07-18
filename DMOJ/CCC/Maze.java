@@ -1,6 +1,6 @@
 import java.util.*;
 import java.io.*;
-public class CCC08S3Maze {
+public class Maze {
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static StringTokenizer st;
 	public static void main(String[] args) throws IOException{
@@ -10,7 +10,7 @@ public class CCC08S3Maze {
 			char town[][] = new char[w][l];
 			boolean v[][] = new boolean[w][l];
 			int dis[][] = new int[w][l];
-			
+
 			for (int x=0; x<w; x++) {
 				char[] t = readLine().toCharArray();
 
@@ -24,7 +24,7 @@ public class CCC08S3Maze {
 			}
 			int px[] = {-1,1,0,0}, py[] = {0,0,-1,1};
 			int h[] = {-1,1};
-			
+
 			ArrayList<Integer> qx = new ArrayList<>(), qy = new ArrayList<>();
 			qx.add(0); qy.add(0);
 			v[0][0] = true;

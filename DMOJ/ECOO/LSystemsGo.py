@@ -14,11 +14,11 @@ for e in range(10):
     for char in a:
         cnt[ord(char)-64] += 1
 
-    for i in range(int(r)):
+    for _ in range(int(r)):
         c, s = input().split()
         coms[c] = s
 
-    for i in range(int(t)):
+    for _ in range(int(t)):
         start = coms[start][0]
         end = coms[end][-1]
 

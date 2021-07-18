@@ -1,8 +1,9 @@
+// Bubble Sort
+
 import java.util.*;
 public class BubbleSort {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Scanner in = new Scanner(System.in);
 		int n = in.nextInt();
 		int[] arr = new int[n];
@@ -26,6 +27,8 @@ public class BubbleSort {
 				}
 			}
 		}
+
+		in.close();
 	}
 
 }

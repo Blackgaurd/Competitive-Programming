@@ -1,8 +1,7 @@
 import java.util.Scanner;
-public class CCC10J4 {
+public class GlobalWarming {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Scanner in = new Scanner(System.in);
 		while (true) {
 			int n = in.nextInt();
@@ -28,6 +27,7 @@ public class CCC10J4 {
 			}
 			System.out.println(cycle);
 		}
+		in.close();
 	}
 
 }

@@ -1,6 +1,6 @@
 import java.util.*;
 import java.io.*;
-public class BlueBookPrime {
+public class Prime {
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static StringTokenizer st;
 	public static void main(String[] args) throws IOException{

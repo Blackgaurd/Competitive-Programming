@@ -1,6 +1,8 @@
+// Common Divisor
+
 import java.util.*;
 import java.io.*;
-public class CommonDivis {
+public class CommonDivisor {
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static StringTokenizer st;
 	public static void main(String[] args) throws IOException{
@@ -15,13 +17,13 @@ public class CommonDivis {
 				bf.retainAll(af);
 				com.addAll(bf);
 			} else {
-				af.retainAll(bf); 
+				af.retainAll(bf);
 				com.addAll(af);
 			}
 			//System.out.println(com);
 			NavigableSet<Long> revcom = com.descendingSet();
 			if (n<=com.size()) {
-				Iterator<Long> iterator = revcom.iterator(); 
+				Iterator<Long> iterator = revcom.iterator();
 				for (int i=0; i<n-1; i++) {
 					iterator.next();
 				}
@@ -33,7 +35,7 @@ public class CommonDivis {
 		TreeSet<Long> f = new TreeSet<>();
 		for (int i=1; i<=Math.sqrt(x); i++) {
 			if (x%i==0) {
-			f.add((long) i); 
+			f.add((long) i);
 			f.add(x/i);
 			}
 		}

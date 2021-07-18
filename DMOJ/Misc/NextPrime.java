@@ -1,3 +1,5 @@
+// Next Prime
+
 import java.util.*;
 public class NextPrime {
 	private static boolean prime(int n) {
@@ -6,11 +8,10 @@ public class NextPrime {
 				return false;
 			}
 		}
-		return true;	 
+		return true;
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		Scanner in = new Scanner(System.in);
 		int num = in.nextInt();
 		if (num<3) {
@@ -21,6 +22,7 @@ public class NextPrime {
 			}
 			System.out.println(num);
 		}
+		in.close();
 	}
 
 }

@@ -1,6 +1,8 @@
+// Add Up Apples
+
 import java.util.*;
 import java.io.*;
-public class Apples {
+public class AddUpApples {
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static StringTokenizer st;
 	static int n, count=0;

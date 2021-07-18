@@ -38,7 +38,7 @@ def main():
         ans = 0
         output = {}
         for val, cnt in fac.items():
-            for i in range(cnt):
+            for _ in range(cnt):
                 ans += val-1
                 output[ind] = val-1
                 ind += 1
@@ -47,7 +47,7 @@ def main():
                 return
         print(ans)
         for val, cnt in output.items():
-            for i in range(cnt):
+            for _ in range(cnt):
                 print(val, end=' ')
 
 main()
