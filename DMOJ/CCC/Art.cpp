@@ -25,4 +25,6 @@ int main(){
     }
     cout << minx-1 << ',' << miny-1 << '\n';
     cout << maxx+1 << ',' << maxy+1 << '\n';
+
+    return 0;
 }

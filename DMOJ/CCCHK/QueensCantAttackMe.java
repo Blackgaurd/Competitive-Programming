@@ -1,3 +1,6 @@
+// CCCHK '15 J3 - Queens can't attack me!
+
+
 import java.util.*;
 import java.io.*;
 public class QueensCantAttackMe {

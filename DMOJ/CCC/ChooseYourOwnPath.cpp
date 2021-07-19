@@ -17,7 +17,7 @@ int main(){
             adj[i].push_back(b);
         }
     }
-    
+
     deque<int> q;
     q.push_back(1);
     dis[1] = 1;
@@ -40,7 +40,6 @@ int main(){
         if (!vis[i]) {all='N'; break;}
     }
     cout << all << '\n' << ans << '\n';
-    
 
     return 0;
 }

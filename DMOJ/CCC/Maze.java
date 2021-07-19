@@ -1,3 +1,5 @@
+// CCC '08 S3 - Maze
+
 import java.util.*;
 import java.io.*;
 public class Maze {

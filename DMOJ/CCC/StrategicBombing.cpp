@@ -36,7 +36,6 @@ bool bfs(int x, int y){
         if (!vis[i]) return true;
     }
     return false;
-
 }
 
 int main(){

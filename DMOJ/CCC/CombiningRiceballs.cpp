@@ -5,18 +5,18 @@ using namespace std;
 #define su(x) do{while((x=getchar())<'0'); for(x-='0'; '0'<=(_=getchar()); x=(x<<3)+(x<<1)+_-'0');}while(0)
 char _;
 
-int n, arr[403], pre[403], ans = 0;
+int n, arr[403], psa[403], ans = 0;
 bool dp[403][403];
 int sum(int start, int end){
     if (start == end) return arr[start];
-    return pre[end] - pre[start-1];
+    return psa[end] - psa[start-1];
 }
 int main(){
     su(n);
     for (int i=1; i<=n; i++){
         su(arr[i]);
         ans = max(ans, arr[i]);
-        pre[i] = pre[i-1] + arr[i];
+        psa[i] = psa[i-1] + arr[i];
         dp[i][i] = true;
     }
     for (int i=1; i+1<=n; i++){

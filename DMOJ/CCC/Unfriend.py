@@ -23,19 +23,13 @@ def check(test):
     q = [n]
     while len(q):
         cur = q.pop()
-        #print(cur)
+        # print(cur)
         for nxt in adj[cur]:
             if nxt not in vis:
                 vis.add(nxt)
                 q.append(nxt)
-    for i in range(1, n + 1):
-        if i not in vis:
-            return False
-    return True
+    return all(i in vis for i in range(1, n + 1))
 
 
-ans = 1  # one extra for empty case
-for comb in cases:
-    if check(comb):
-        ans += 1
+ans = 1 + sum(1 for comb in cases if check(comb))
 print(ans)

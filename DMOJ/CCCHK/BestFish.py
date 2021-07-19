@@ -1,5 +1,6 @@
 # CCCHK '08 J1 - Best fish
 
+
 def list_conv(string):
     result = 1
     li = list(string.split(" "))

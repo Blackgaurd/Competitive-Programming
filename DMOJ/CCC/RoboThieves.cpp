@@ -65,7 +65,7 @@ int main(){
             else if (is_conveyor(arr[cam.row][y])==-1) arr[cam.row][y] = 'C';
         }
     }
-    
+
     // spfa
     memset(dis, INF, sizeof(dis));
     dis[q.front().row][q.front().col] = 0;

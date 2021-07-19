@@ -13,7 +13,6 @@ int n, m;
 int main(){
     sc(n); sc(m);
     deque<int> q;
-    
     for (int i=1; i<=n; i++){
         for (int j=1; j<=m; j++){
             int a; sc(a);

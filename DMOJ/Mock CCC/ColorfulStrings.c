@@ -2,7 +2,7 @@
 
 #include<stdio.h>
 
-#ifndef WIN32
+#ifdef __linux__
 #define getchar getchar_unlocked
 #endif
 

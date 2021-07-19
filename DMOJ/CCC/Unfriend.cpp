@@ -21,7 +21,7 @@ void dfs(int u){
     cnt[u]=1;
     for (int v: adj[u]){
         dfs(v);
-        cnt[u]*=cnt[v];
+        cnt[u] *= cnt[v];
     }
     cnt[u]++;
 }

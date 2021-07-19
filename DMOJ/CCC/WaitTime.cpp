@@ -18,7 +18,7 @@ using qpii = deque<pii>;
 
 //100 people maximum
 int m, t=0; // t = time
-vi arr[101]; // use vector to store different times messages are sent or recieved (alternating)
+vi arr[101]; // use vector to store different times messages are sent or received (alternating)
 int main(){
     ios_base::sync_with_stdio(0);
     cin.tie(nullptr);
@@ -32,7 +32,7 @@ int main(){
     for (int i=1; i<=100; i++){ // loop through 100 people
         if (!arr[i].empty()){ // if person has message history
             cout << i << " ";
-            if (arr[i].size()%2==1) cout << -1 << nl; // odd num = last mesage was recieved, not message sent back
+            if (arr[i].size()%2==1) cout << -1 << nl; // odd num = last mesage was received, not message sent back
             else {
                 int sum = 0;
                 for (int j=1; j<arr[i].size(); j+=2){

@@ -1,3 +1,5 @@
+// CCC '15 J2 - Happy or Sad
+
 import java.util.Scanner;
 public class HappyOrSad {
 

@@ -1,3 +1,5 @@
+// CCC '05 S4 - Pyramid Message Scheme
+
 import java.util.*;
 import java.io.*;
 public class PyramidMessageScheme {
@@ -23,7 +25,7 @@ public class PyramidMessageScheme {
 			}
 			System.out.println((m-max*2)*10);
 		}
-		
+
 	}
 	static String next () throws IOException {
 		while (st == null || !st.hasMoreTokens())

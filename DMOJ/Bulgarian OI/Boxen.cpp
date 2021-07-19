@@ -11,7 +11,7 @@ bool vis[100005];
 int solve(){
     // take inputs and make graph
     // box with key points to box it can open
-    int n; scan(n); 
+    int n; scan(n);
     for (int i=1; i<=n; i++){
         int a; scan(a);
         adj[a].push_back(i);

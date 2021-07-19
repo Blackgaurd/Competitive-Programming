@@ -21,7 +21,7 @@ bool dfs(int cur){
         }
     }
     removed[cur] = !sol;
-    //cout << cur << ": " << !sol << nl; 
+    //cout << cur << ": " << !sol << nl;
     return sol;
 }
 int main(){
@@ -77,7 +77,7 @@ int main(){
     }
     // could I have simplified diameter finding? yes
     // do I want to? no
-    
+
     int ans = 2*(nodes-1)-dia;
     cout << ans << nl;
 

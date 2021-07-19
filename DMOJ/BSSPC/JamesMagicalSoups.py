@@ -1,4 +1,6 @@
 # BSSPC '21 J4 - James's Magical Soups
+# solution no longer works
+# worked during contest bc of terrible test cases LOL
 
 import sys
 input = sys.stdin.readline

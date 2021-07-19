@@ -52,7 +52,6 @@ int main(){
         for (int j=1; j<=c; j++) cout << arr[i][j];
         cout << nl;
     }
-    
 
     return 0;
 }

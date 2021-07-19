@@ -3,6 +3,7 @@
 import sys
 from functools import cache
 from math import sqrt
+
 input = sys.stdin.readline
 
 
@@ -11,13 +12,10 @@ def trialDiv(n: int):
     if n <= 2:
         return n == 2
 
-    if n&1 == 0:
+    if n & 1 == 0:
         return False
 
-    for i in range(3, int(sqrt(n))+1, 2):
-        if n%i == 0:
-            return False
-    return True
+    return all(n % i != 0 for i in range(3, int(sqrt(n)) + 1, 2))
 
 
 for _ in range(int(input())):
@@ -26,6 +24,6 @@ for _ in range(int(input())):
         print(a, a)
     else:
         for i in range(3, a):
-            if trialDiv(i) and trialDiv(a*2-i):
-                print(i, a*2-i)
+            if trialDiv(i) and trialDiv(a * 2 - i):
+                print(i, a * 2 - i)
                 break
