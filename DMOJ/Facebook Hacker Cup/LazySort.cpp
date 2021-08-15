@@ -2,53 +2,83 @@
 
 #include <bits/stdc++.h>
 using namespace std;
+#ifdef __linux__
+#define getchar getchar_unlocked
+#endif
+#define su(x) do{while((x=getchar())<48); for(x-=48; 48<=(_=getchar()); x=(x<<3)+(x<<1)+_-48);}while(0)
+#define si(x) do{while((x=getchar())<45); _sign=x==45; if(_sign) while((x=getchar())<48); for(x-=48; 48<=(_=getchar()); x=(x<<3)+(x<<1)+_-48); x=_sign?-x:x;}while(0)
+#define sc(x) do{while((x=getchar())<33);}while(0)
+char _; bool _sign;
 
-#pragma GCC optimize ("Ofast")
-#pragma GCC target ("avx2")
-#define scan(x) do{while((x=getchar())<'0'); for(x-='0'; '0'<=(_=getchar()); x=(x<<3)+(x<<1)+_-'0');}while(0)
-char _;
-#define ms memset
-#define pb push_back
-#define nl "\n"
-#define mp make_pair
-using ll = long long;
-using ull = unsigned long long;
-using pii = pair<int, int>;
-using vi = vector<int>;
-using qi = deque<int>;
-
-int t;
+int t, n;
+deque<int> a, b, c;
 int main(){
-    ios_base::sync_with_stdio(0);
-    cin.tie(0); cout.tie(0);
-    /*
-    #ifdef _DEBUG
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
-    #endif
-    */
-    scan(t);
-    while (t--){
-        int n, mx, mn; scan(n);
-        vi arr;
-        for (int i=0, a; i<n; i++){
-            scan(a); arr.pb(a);
+    su(t);
+    for (int _case=1; _case<=t; _case++){
+        a.clear();
+        b.clear();
+        c.clear();
+        su(n);
+        for (int i=0; i<n; i++){
+            int x; su(x);
+            a.push_back(x);
+            c.push_back(x);
         }
-        mx = mn = arr[0];
-        bool solve = true;
-        for (int i=1; i<n; i++){
-            if (arr[i]<=mn){
-                mn = arr[i];
-                continue;
+        while (!a.empty()){
+            if (b.empty()){
+                b.push_back(a.back());
+                a.pop_back();
             }
-            if (arr[i]>=mx){
-                mx = arr[i];
-                continue;
+            else if (a.front() == b.front() - 1){
+                b.push_front(a.front());
+                a.pop_front();
             }
-            solve = false;
+            else if (a.front() == b.back() + 1){
+                b.push_back(a.front());
+                a.pop_front();
+            }
+            else if (a.back() == b.front() - 1){
+                b.push_front(a.back());
+                a.pop_back();
+            }
+            else if (a.back() == b.back() + 1){
+                b.push_back(a.back());
+                a.pop_back();
+            }
+            else break;
         }
-        cout << (solve?"Yes":"No") << nl;
+        if (a.empty()){
+            printf("Case #%d: yes\n", _case);
+            continue;
+        }
+
+        b.clear();
+        while (!c.empty()){
+            if (b.empty()){
+                b.push_back(c.front());
+                c.pop_front();
+            }
+            else if (c.front() == b.front() - 1){
+                b.push_front(c.front());
+                c.pop_front();
+            }
+            else if (c.front() == b.back() + 1){
+                b.push_back(c.front());
+                c.pop_front();
+            }
+            else if (c.back() == b.front() - 1){
+                b.push_front(c.back());
+                c.pop_back();
+            }
+            else if (c.back() == b.back() + 1){
+                b.push_back(c.back());
+                c.pop_back();
+            }
+            else break;
+        }
+        printf("Case #%d: %s\n", _case, (c.empty() ? "yes" : "no"));
     }
 
     return 0;
 }
+

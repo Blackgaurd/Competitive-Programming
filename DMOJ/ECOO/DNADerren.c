@@ -11,7 +11,6 @@ int main(){
     char cur, pre = getchar();
     while ((cur = getchar()) != '\n'){
         if (vow(cur)){
-            putchar(pre);
             if (vow(pre))
                 putchar(' ');
         }
