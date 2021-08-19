@@ -1,4 +1,4 @@
-// Soduko Challenge
+// Sudoku Challenge
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -21,14 +21,6 @@ bool check(int row_num, int col_num, int val){
         }
     }
     return true;
-}
-pair<int, int> open(){
-    for (int i=1; i<=9; i++){
-        for (int j=1; j<=9; j++){
-            if (arr[i][j]==0) return {i, j};
-        }
-    }
-    return {0, 0};
 }
 bool solve(int ind){
     if (ind==clear.size()) {
@@ -57,7 +49,7 @@ int main(){
             else clear.push_back({i, j});
         }
     }
-    
+
     solve(0);
 
     return 0;

@@ -1,4 +1,4 @@
-// Soduko Challenge
+// Sudoku Challenge
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -50,7 +50,7 @@ int main(){
         }
         getchar();
     }
-    
+
     solve(0);
 
     return 0;
