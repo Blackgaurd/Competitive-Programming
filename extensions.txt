@@ -1,0 +1,54 @@
+Useful list of vscode extensions for competitive programming
+extensions for (3) of my most used languages (py, java, cpp)
+
+Instructions:
+copy the text between the horizontal dashes
+and paste into a terminal
+
+
+----- MUST HAVE -----
+code --install-extension danielpinto8zz6.c-cpp-compile-run
+code --install-extension austin.code-gnu-global
+code --install-extension formulahendry.code-runner
+code --install-extension jeff-hykin.better-cpp-syntax
+code --install-extension magicstack.MagicPython
+code --install-extension ms-python.python
+code --install-extension ms-python.vscode-pylance
+code --install-extension ms-vscode.cpptools
+code --install-extension redhat.java
+code --install-extension redhat.vscode-commons
+code --install-extension redhat.vscode-yaml
+code --install-extension VisualStudioExptTeam.vscodeintellicode
+code --install-extension vscjava.vscode-java-debug
+---------------------
+
+
+----- May be useful sometimes -----
+code --install-extension aaron-bond.better-comments
+code --install-extension alefragnani.project-manager
+code --install-extension codezombiech.gitignore
+code --install-extension DmitryDorofeev.empty-indent
+code --install-extension ms-vsliveshare.vsliveshare
+code --install-extension ms-vsliveshare.vsliveshare-audio
+code --install-extension sourcery.sourcery
+code --install-extension streetsidesoftware.code-spell-checker
+-----------------------------------
+
+
+----- Git extensions (if you wanna upload to github) -----
+code --install-extension donjayamanne.githistory
+code --install-extension eamodio.gitlens
+code --install-extension felipecaputo.git-project-manager
+code --install-extension GitHub.vscode-pull-request-github
+code --install-extension KevinRose.vsc-python-indent
+code --install-extension ziyasal.vscode-open-in-github
+----------------------------------------------------------
+
+
+----- Just for fun -----
+code --install-extension akamud.vscode-theme-onedark
+code --install-extension attilabuti.brainfuck-syntax
+code --install-extension CoenraadS.bracket-pair-colorizer-2
+code --install-extension icrawl.discord-vscode
+code --install-extension PKief.material-icon-theme
+------------------------

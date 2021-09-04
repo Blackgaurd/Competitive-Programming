@@ -1,3 +1,5 @@
+// CCO '96 P5 - All Roads Lead Where?
+
 import java.util.*;
 import java.io.*;
 public class AllRoadsLeadWhere {
@@ -9,18 +11,18 @@ public class AllRoadsLeadWhere {
 		for (int i=1; i<=26; i++) {
 			adj[i] = new ArrayList<>();
 		}
-		
-		for (int i=0; i<n; i++) { 
+
+		for (int i=0; i<n; i++) {
 			String t[] = readLine().split(" ");
-			int c1 = t[0].charAt(0)-'@', c2 = t[1].charAt(0)-'@'; 
+			int c1 = t[0].charAt(0)-'@', c2 = t[1].charAt(0)-'@';
 			adj[c1].add(c2);
 			adj[c2].add(c1);
 		}
-		
+
 		for (int i=0; i<m; i++) {
 			String t[] = readLine().split(" ");
 			int start = t[0].charAt(0)-'@', end = t[1].charAt(0)-'@';
-			
+
 			Queue<Integer> q = new LinkedList<>();
 			boolean v[] = new boolean[27];
 			int prev[] = new int[27];
@@ -35,7 +37,7 @@ public class AllRoadsLeadWhere {
 					}
 				}
 			}
-			
+
 			for (int x=start; x!=-1; x=prev[x]) {
 				System.out.print((char) (x+'@'));
 			} System.out.println();

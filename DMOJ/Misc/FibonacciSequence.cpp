@@ -20,9 +20,6 @@ unordered_map<unsigned long long, ll> nums;
 unsigned long long fib(unsigned long long n){
     if (n<=1) return 1;
     if (nums.find(n)!=nums.end()) return nums[n];
-    // multiply matrix by previous 2 terms 
-    // 0 1
-    // 1 1
     nums[n] = (fib((n-1)/2)*fib((n-2)/2)+fib(n/2)*fib((n+1)/2))%mod;
     return nums[n];
 }
