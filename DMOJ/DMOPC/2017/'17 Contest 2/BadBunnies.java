@@ -1,3 +1,5 @@
+// DMOPC '17 Contest 2 P3 - Bad Bunnies
+
 import java.util.*;
 import java.io.*;
 public class BadBunnies {

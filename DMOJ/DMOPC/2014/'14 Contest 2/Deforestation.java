@@ -1,37 +1,23 @@
+// DMOPC '14 Contest 2 P4 - Deforestation
+
 import java.util.*;
 import java.io.*;
-public class MimiAndPrimes {
+public class Deforestation {
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	static StringTokenizer st;
 	public static void main(String[] args) throws IOException{
-		int n = readInt();
-		long gcd = readLong();
-		for (int i=0; i<n-1; i++) {
-			long x = readLong();
-			gcd = gcd(x,gcd);
+		int n = readInt(), mass[] = new int[n+1], psa[] = new int[n+1];
+		for (int i=1; i<=n; i++) {
+			mass[i] = readInt();
 		}
-		if (lpf(gcd)!=0) {
-			System.out.println(lpf(gcd));
-		} else System.out.println("DNE");
-	}
-	static long lpf(long a) {
-		long mp = 0;
-		while (a%2==0) {
-			mp=2;
-			a/=2;
+		for (int i=1; i<=n; i++) {
+			psa[i] = psa[i-1]+mass[i];
 		}
-		for (int i=3; i<=Math.sqrt(a); i+=2) {
-			while (a%i==0) {
-				mp=i;
-				a/=i;
-			}
+		int q = readInt();
+		for (int i=0; i<q; i++) {
+			int a = readInt(), b = readInt();
+			System.out.println(psa[b+1]-psa[a]);
 		}
-		if (a>2) mp = a;
-		return mp;
-	}
-	static long gcd(long a, long b) {
-		if (a%b==0) return b;
-		return gcd(b, a%b);
 	}
 	static String next () throws IOException {
 		while (st == null || !st.hasMoreTokens())

@@ -1,3 +1,5 @@
+# DMOPC '20 Contest 4 P2 - Beautiful Grids
+
 import sys
 input = sys.stdin.readline
 

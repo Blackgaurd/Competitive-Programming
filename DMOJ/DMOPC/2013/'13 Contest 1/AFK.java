@@ -1,3 +1,5 @@
+// DMOPC '13 Contest 1 P4 - AFK
+
 import java.util.*;
 import java.io.*;
 public class AFK {
@@ -10,7 +12,7 @@ public class AFK {
 			char room[][] = new char[w][l];
 			boolean v[][] = new boolean[w][l];
 			int dis[][] = new int[w][l];
-			
+
 			for (int x=0; x<w; x++) {
 				char[] t = readLine().toCharArray();
 
@@ -23,12 +25,12 @@ public class AFK {
 						fx = x; fy = y;
 					} else if (c=='W') {
 						tx = x; ty = y;
-					} 
+					}
 				}
 			}
 			int dx[] = {1, -1, 0, 0};
 			int dy[] = {0, 0, 1, -1};
-			
+
 			ArrayList<Integer> qx = new ArrayList<>(), qy = new ArrayList<>();
 			qx.add(fx); qy.add(fy);
 			v[fx][fy] = true;
