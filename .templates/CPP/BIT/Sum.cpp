@@ -1,3 +1,5 @@
+// 1D Binary Indexed Tree
+
 #include<bits/stdc++.h>
 using namespace std;
 
