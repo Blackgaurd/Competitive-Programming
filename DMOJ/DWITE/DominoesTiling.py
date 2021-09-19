@@ -1,9 +1,9 @@
 # DWITE '10 R3 #3 - Dominos Tiling
 
 from sys import stdin
-from functools import cache
+from functools import lru_cache
 
-@cache
+@lru_cache
 def f(n:int) -> int:
     if n&1:
         return 0
@@ -12,7 +12,7 @@ def f(n:int) -> int:
     return f(n-2) + 2 * g(n-1)
 
 
-@cache
+@lru_cache
 def g(n:int) -> int:
     if n == 0 or n == 1:
         return n

@@ -1,8 +1,8 @@
-from functools import cache, lru_cache
+from functools import lru_cache
 import timeit
 
 
-@cache
+@lru_cache
 def fib_with_cache(num: int):
     if num <= 1:
         return 1

@@ -1,7 +1,6 @@
 # CCC '05 J5 - Bananas
 
 import sys
-from functools import cache
 
 input = sys.stdin.readline
 

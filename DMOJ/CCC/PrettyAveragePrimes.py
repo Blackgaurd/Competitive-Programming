@@ -1,13 +1,13 @@
 # CCC '19 S2 - Pretty Average Primes
 
 import sys
-from functools import cache
+from functools import lru_cache
 from math import sqrt
 
 input = sys.stdin.readline
 
 
-@cache
+@lru_cache
 def trialDiv(n: int):
     if n <= 2:
         return n == 2
