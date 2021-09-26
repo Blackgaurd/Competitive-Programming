@@ -1,9 +1,8 @@
-# if only it was as easy as copy pasting from github...
-# this solution will earn you a well deserved 5pp
-# if only you could make:
-# - a better model
-# - stronger w and b arrays
-# - a way to reduce character count
+# this solution only gives partial points
+# train network more to increase accuracy and thus points
+
+# don't know whats going on? me neither
+# search up MNIST dataset to get started
 
 import math
 import sys
