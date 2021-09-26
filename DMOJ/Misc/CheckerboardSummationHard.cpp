@@ -1,7 +1,14 @@
-// 2D Binary Indexed Tree
+// Checkerboard Summation (Hard)
 
 #include<bits/stdc++.h>
 using namespace std;
+#ifdef __linux__
+#define getchar getchar_unlocked
+#endif
+#define su(x) do{while((x=getchar())<48); for(x-=48; 48<=(_=getchar()); x=(x<<3)+(x<<1)+_-48);}while(0)
+#define si(x) do{while((x=getchar())<45); _sign=x==45; if(_sign) while((x=getchar())<48); for(x-=48; 48<=(_=getchar()); x=(x<<3)+(x<<1)+_-48); x=_sign?-x:x;}while(0)
+#define sc(x) do{while((x=getchar())<33);}while(0)
+char _; bool _sign;
 
 template<typename T>
 struct BIT2D{
@@ -47,3 +54,30 @@ struct BIT2D{
         add(x, y, val - get(x, y));
     }
 };
+
+int m, n;
+char c;
+bool black(int a, int b){
+    return !((a + b) & 1);
+}
+int main(){
+    su(m); su(n);
+    BIT2D<int> bit(m + 1, n + 1);
+    while (true){
+        sc(c);
+        if (c == '0') break;
+        if (c == '1'){
+            int r, c, x;
+            su(r); su(c); si(x);
+            bit.change(r, c, (black(r, c) ? x : -x));
+        }
+        else {
+            int r1, c1, r2, c2, ans;
+            su(r1); su(c1); su(r2); su(c2);
+            ans = bit.sum(r1, c1, r2, c2);
+            printf("%d\n", (black(r1, c1) ? ans : -ans));
+        }
+    }
+
+    return 0;
+}

@@ -1,7 +1,14 @@
-// 1D Binary Indexed Tree
+// DMOPC '14 Contest 2 P6 - Selective Cutting
 
 #include<bits/stdc++.h>
 using namespace std;
+#ifdef __linux__
+#define getchar getchar_unlocked
+#endif
+#define su(x) do{while((x=getchar())<48); for(x-=48; 48<=(_=getchar()); x=(x<<3)+(x<<1)+_-48);}while(0)
+#define si(x) do{while((x=getchar())<45); _sign=x==45; if(_sign) while((x=getchar())<48); for(x-=48; 48<=(_=getchar()); x=(x<<3)+(x<<1)+_-48); x=_sign?-x:x;}while(0)
+#define sc(x) do{while((x=getchar())<33);}while(0)
+char _; bool _sign;
 
 template<typename T>
 struct BIT{
@@ -27,10 +34,12 @@ struct BIT{
     }
 
     T get(int ind){
+        if ((ind & 1) == 0)
+            return bit[ind];
         return sum(ind, ind);
     }
 
-    void change(int ind, T val){
+    void set(int ind, T val){
         add(ind, val - get(ind));
     }
 
@@ -49,3 +58,8 @@ struct BIT{
         return sum(r) - sum(l-1);
     }
 };
+
+int n, q;
+int main(){
+    
+}
