@@ -3,4 +3,4 @@
 import sys
 
 s, r = map(int, sys.stdin.readline().split())
-print("SQUARE" if s*s > 3.14*r*r else "CIRCLE")
+print("SQUARE" if s * s > 3.14 * r * r else "CIRCLE")

@@ -9,13 +9,15 @@ using vi = vector<int>;
 using qi = queue<int>;
 using qpii = queue<pair<int, int>>;
 
-int main(){
+int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(nullptr);
-    int n; cin >> n;
-    for (int i=0; i<n; i++){
-        string t; cin >> t;
-        for (auto& ch: t) ch = tolower(ch);
+    int n;
+    cin >> n;
+    for (int i = 0; i < n; i++) {
+        string t;
+        cin >> t;
+        for (auto& ch : t) ch = tolower(ch);
         cout << t << endl;
     }
 

@@ -5,7 +5,7 @@ import sys
 input = sys.stdin.readline
 
 # n = int(input())
-values = {'I': 1, 'V': 5, 'X': 10, 'L': 50, 'C': 100, 'D': 500, 'M': 1000}
+values = {"I": 1, "V": 5, "X": 10, "L": 50, "C": 100, "D": 500, "M": 1000}
 
 
 def to_dec(x):
@@ -26,7 +26,7 @@ def to_dec(x):
 def to_roman(x):
     ret = ""
     nums = [1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000]
-    roms = ['I', 'IV', 'V', 'IX', 'X', 'XL', 'L', 'XC', 'C', 'CD', 'D', 'CM', 'M']
+    roms = ["I", "IV", "V", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M"]
     i = 12
     while x:
         div = x // nums[i]
@@ -35,8 +35,9 @@ def to_roman(x):
         i -= 1
     return ret
 
+
 for i in range(int(input())):
-    a, b = input()[:-2].split('+')
+    a, b = input()[:-2].split("+")
     x = to_dec(a)
     y = to_dec(b)
     print(f'{a}+{b}={to_roman(x+y) if x+y<=1000 else "CONCORDIA CUM VERITATE"}')

@@ -1,7 +1,8 @@
 // DMOPC '19 Contest 3 P3 - Majority
 
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
+// clang-format off
 #ifdef __linux__
 #define getchar getchar_unlocked
 #endif
@@ -9,65 +10,62 @@ using namespace std;
 #define si(x) do{while((x=getchar())<45); _sign=x==45; if(_sign) while((x=getchar())<48); for(x-=48; 48<=(_=getchar()); x=(x<<3)+(x<<1)+_-48); x=_sign?-x:x;}while(0)
 #define sc(x) do{while((x=getchar())<33);}while(0)
 char _; bool _sign;
+// clang-format on
 
-template<typename T>
-struct BIT{
+template <typename T>
+struct BIT {
     vector<T> bit;
     int n;
 
-    BIT(int size){
+    BIT(int size) {
         n = size;
         bit.assign(n, 0);
     }
 
-    BIT(vector<T> &arr) : BIT(arr.size()){
-        for (int i=0; i<n; i++){
+    BIT(vector<T> &arr) : BIT(arr.size()) {
+        for (int i = 0; i < n; i++) {
             add(i, arr[i]);
         }
     }
 
-    void add(int ind, T val){
-        while (ind < n){
+    void add(int ind, T val) {
+        while (ind < n) {
             bit[ind] += val;
             ind |= (ind + 1);
         }
     }
 
-    T get(int ind){
-        return sum(ind, ind);
-    }
+    T get(int ind) { return sum(ind, ind); }
 
-    void change(int ind, T val){
-        add(ind, val - get(ind));
-    }
+    void change(int ind, T val) { add(ind, val - get(ind)); }
 
-    T sum(int r){
+    T sum(int r) {
         T ret = 0;
-        while (r >= 0){
+        while (r >= 0) {
             ret += bit[r];
             r = (r & (r + 1)) - 1;
         }
         return ret;
     }
 
-    T sum(int l, int r){
-        if (l <= 0)
-            return sum(r);
-        return sum(r) - sum(l-1);
+    T sum(int l, int r) {
+        if (l <= 0) return sum(r);
+        return sum(r) - sum(l - 1);
     }
 };
 
-const int MM = 15e4+3;
+const int MM = 15e4 + 3;
 int n, arr[MM], ans = 0;
 BIT<int> bit(2 * MM);
-int main(){
+int main() {
     su(n);
-    for (int i=1, a; i<=n; i++){
+    bit.add(n + 1, 1);
+    for (int i = 1, a; i <= n; i++) {
         su(a);
         arr[i] = (a == 1 ? 1 : -1);
-        arr[i] += arr[i-1];
-        int shift = arr[i] + MM;
-        ans += bit.sum(shift);
+        arr[i] += arr[i - 1];
+        int shift = arr[i] + n + 1;
+        ans += bit.sum(shift - 1);
         bit.add(shift, 1);
     }
     printf("%d\n", ans);

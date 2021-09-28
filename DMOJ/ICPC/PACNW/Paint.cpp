@@ -1,7 +1,8 @@
 // ICPC PACNW 2016 H - Paint
 
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
+// clang-format off
 #ifdef __linux__
 #define getchar getchar_unlocked
 #endif
@@ -9,24 +10,26 @@ using namespace std;
 #define si(x) do{while((x=getchar())<45); _sign=x==45; if(_sign) while((x=getchar())<48); for(x-=48; 48<=(_=getchar()); x=(x<<3)+(x<<1)+_-48); x=_sign?-x:x;}while(0)
 #define sc(x) do{while((x=getchar())<33);}while(0)
 char _; bool _sign;
+// clang-format on
 typedef long long ll;
 
-struct trp{
+struct trp {
     ll s, f, w;
-    trp(ll a, ll b){
+    trp(ll a, ll b) {
         s = a;
         f = b;
         w = b - a + 1;
     }
-    bool operator < (const trp& other) const {return f < other.f;}
+    bool operator<(const trp& other) const { return f < other.f; }
 };
-ll n, k, dp[(int)2e5+3];
+ll n, k, dp[(int)2e5 + 3];
 vector<trp> arr;
-int binlower(ll x){
+int binlower(ll x) {
     int lo = 0, hi = k, ind = 0;
-    while (lo <= hi){
+    while (lo <= hi) {
         int mid = (lo + hi) / 2;
-        if (arr[mid].f > x) hi = mid - 1;
+        if (arr[mid].f > x)
+            hi = mid - 1;
         else {
             ind = mid;
             lo = mid + 1;
@@ -34,17 +37,19 @@ int binlower(ll x){
     }
     return ind;
 }
-int main(){
-    su(n); su(k);
+int main() {
+    su(n);
+    su(k);
     arr.emplace_back(1, 0);
-    for (ll i=0, a, b; i<k; i++){
-        su(a); su(b);
+    for (ll i = 0, a, b; i < k; i++) {
+        su(a);
+        su(b);
         arr.emplace_back(a, b);
     }
     sort(arr.begin(), arr.end());
-    for (int i=1; i<=k; i++){
+    for (int i = 1; i <= k; i++) {
         int ind = binlower(arr[i].s);
-        dp[i] = max(dp[i-1], dp[ind] + arr[i].w);
+        dp[i] = max(dp[i - 1], dp[ind] + arr[i].w);
     }
     printf("%lld\n", n - dp[k]);
 

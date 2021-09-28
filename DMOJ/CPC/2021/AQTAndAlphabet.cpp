@@ -1,13 +1,13 @@
 // CPC '21 Contest 1 P0 - AQT and Alphabet
 
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 string t;
-int main(){
+int main() {
     cin >> t;
-    for (char c='a'; c<='z'; c++){
-        if (t.find(c) >= t.size()){
+    for (char c = 'a'; c <= 'z'; c++) {
+        if (t.find(c) >= t.size()) {
             cout << c << '\n';
             return 0;
         }

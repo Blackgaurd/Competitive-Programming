@@ -3,19 +3,19 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#pragma GCC optimize ("Ofast")
-#pragma GCC target ("avx2")
+#pragma GCC optimize("Ofast")
+#pragma GCC target("avx2")
 #define nl "\n"
 
-const int MM = 1e5+5;
+const int MM = 1e5 + 5;
 int n, q, arr[MM];
-int find_leader(int x){
-    if (arr[x]!=x){
+int find_leader(int x) {
+    if (arr[x] != x) {
         arr[x] = find_leader(arr[x]);
     }
     return arr[x];
 }
-int main(){
+int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(nullptr);
     /*
@@ -26,20 +26,20 @@ int main(){
     */
     cin >> n >> q;
     // initiate disjoint set
-    for (int i=1; i<=n; i++){
+    for (int i = 1; i <= n; i++) {
         arr[i] = i;
     }
-    for (int k=0; k<q; k++){
-        char c; int a, b;
+    for (int k = 0; k < q; k++) {
+        char c;
+        int a, b;
         cin >> c >> a >> b;
         int fa = find_leader(a), fb = find_leader(b);
-        if (c=='A'){
+        if (c == 'A') {
             // union sets a and b
             arr[fa] = fb;
-        }
-        else if (c=='Q'){
+        } else if (c == 'Q') {
             // do a and b have the same leader?
-            cout << (fa==fb? "Y":"N") << nl;
+            cout << (fa == fb ? "Y" : "N") << nl;
         }
     }
 

@@ -3,4 +3,4 @@
 t = input()
 l = int(input())
 
-print(min(t[i:i+l] for i in range(len(t)-l+1)))
+print(min(t[i : i + l] for i in range(len(t) - l + 1)))

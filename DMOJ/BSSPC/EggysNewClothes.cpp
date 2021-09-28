@@ -1,7 +1,8 @@
 // BSSPC '21 J1 - Eggy's New Clothes
 
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
+// clang-format off
 #ifdef __linux__
 #define getchar getchar_unlocked
 #endif
@@ -9,11 +10,13 @@ using namespace std;
 #define si(x) do{while((x=getchar())<45); _sign=x==45; if(_sign) while((x=getchar())<48); for(x-=48; 48<=(_=getchar()); x=(x<<3)+(x<<1)+_-48); x=_sign?-x:x;}while(0)
 #define sc(x) do{while((x=getchar())<33);}while(0)
 char _; bool _sign;
+// clang-format on
+
 int a, b;
-int main(){
+int main() {
     cin >> a >> b;
-    if ((a+2)*3+16 <= b){
+    if ((a + 2) * 3 + 16 <= b) {
         printf("Yes it fits!\n");
-    }
-    else printf("No, it's too small :(\n");
+    } else
+        printf("No, it's too small :(\n");
 }

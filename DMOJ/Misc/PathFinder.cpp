@@ -3,9 +3,16 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#pragma GCC optimize ("Ofast")
-#pragma GCC target ("avx2")
-#define scan(x) do{while((x=getchar())<'0'); for(x-='0'; '0'<=(_=getchar()); x=(x<<3)+(x<<1)+_-'0');}while(0)
+#pragma GCC optimize("Ofast")
+#pragma GCC target("avx2")
+#define scan(x)                                 \
+    do {                                        \
+        while ((x = getchar()) < '0')           \
+            ;                                   \
+        for (x -= '0'; '0' <= (_ = getchar());  \
+             x = (x << 3) + (x << 1) + _ - '0') \
+            ;                                   \
+    } while (0)
 char _;
 #define ms memset
 #define pb push_back
@@ -22,9 +29,10 @@ using qi = deque<int>;
 int n, m, k;
 set<pii> blocked;
 deque<pii> q;
-int main(){
+int main() {
     ios_base::sync_with_stdio(0);
-    cin.tie(0); cout.tie(0);
+    cin.tie(0);
+    cout.tie(0);
     /*
     #ifdef _DEBUG
     freopen("input.txt", "r", stdin);
@@ -32,11 +40,11 @@ int main(){
     #endif
     */
     cin >> n >> m >> k;
-    for (int i=0; i<k; i++){
-        int a, b; cin >> a >> b;
+    for (int i = 0; i < k; i++) {
+        int a, b;
+        cin >> a >> b;
         blocked.insert(mp(a, b));
     }
-
 
     return 0;
 }

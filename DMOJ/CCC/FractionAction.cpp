@@ -3,8 +3,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-#pragma GCC optimize ("Ofast")
-#pragma GCC target ("avx2")
+#pragma GCC optimize("Ofast")
+#pragma GCC target("avx2")
 #define ms memset
 #define pb push_back
 #define nl "\n"
@@ -17,15 +17,16 @@ using qi = deque<int>;
 using qpii = deque<pii>;
 
 int n, d;
-int main(){
+int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(nullptr);
     cin >> n >> d;
-    if (n%d==0) cout << n/d;
-    else{
-        int w = n/d, f = n%d, gcd = __gcd(f, d);
+    if (n % d == 0)
+        cout << n / d;
+    else {
+        int w = n / d, f = n % d, gcd = __gcd(f, d);
         if (w) cout << w << " ";
-        cout << f/gcd << "/" << d/gcd;
+        cout << f / gcd << "/" << d / gcd;
     }
 
     return 0;

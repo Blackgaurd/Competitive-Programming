@@ -1,6 +1,7 @@
 # Another Contest 8 Problem 2 - Unnecessary Trash Push
 
 import sys
+
 input = sys.stdin.readline
 
 for i in range(int(input())):

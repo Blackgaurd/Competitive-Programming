@@ -4,10 +4,11 @@
 
 int n, l;
 int c;
-int main(){
+int main() {
     scanf("%d%d\n", &n, &l);
-    while ((c=getchar()) != '\n'){
-        if (c == ' ') putchar(c);
+    while ((c = getchar()) != '\n') {
+        if (c == ' ')
+            putchar(c);
         else {
             c += l;
             while (c > 'z') c -= 26;

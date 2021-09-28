@@ -6,4 +6,4 @@ n = int(input())
 for i in range(n):
     ttl -= arr[int(input())]
 
-print("deal" if ttl // (10-n) < int(input()) else "no deal")
+print("deal" if ttl // (10 - n) < int(input()) else "no deal")

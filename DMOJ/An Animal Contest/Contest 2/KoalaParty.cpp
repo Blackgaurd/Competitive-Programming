@@ -1,7 +1,8 @@
 // An Animal Contest 2 P2 - Koala Party
 
 #include<bits/stdc++.h>
-using namespace std;
+using namespace std;// clang-format on
+// clang-format off
 #ifdef __linux__
 #define getchar getchar_unlocked
 #endif
@@ -9,6 +10,7 @@ using namespace std;
 #define si(x) do{while((x=getchar())<45); _sign=x==45; if(_sign) while((x=getchar())<48); for(x-=48; 48<=(_=getchar()); x=(x<<3)+(x<<1)+_-48); x=_sign?-x:x;}while(0)
 #define sc(x) do{while((x=getchar())<33);}while(0)
 char _; bool _sign;
+// clang-format on
 
 int n, a[(int)4e3];
 set<int> s;

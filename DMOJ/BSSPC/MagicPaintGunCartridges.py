@@ -1,14 +1,15 @@
 # BSSPC '21 J3 - Magic Paint Gun Cartridges
 
 import sys
+
 input = sys.stdin.readline
 
 m, n = map(int, input().split())
 
 r, y, b = 0, 0, 0
-red = lambda char: char in ['R', 'O', 'P', 'B']
-blue = lambda char: char in ['U', 'G', 'P', 'B']
-yellow = lambda char: char in ['Y', 'G', 'O', 'B']
+red = lambda char: char in ["R", "O", "P", "B"]
+blue = lambda char: char in ["U", "G", "P", "B"]
+yellow = lambda char: char in ["Y", "G", "O", "B"]
 
 for i in range(n):
     row = input()[:-1]

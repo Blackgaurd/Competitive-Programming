@@ -1,22 +1,22 @@
 // Mock CCC '21 S2 - Colorful Strings
 
-#include<stdio.h>
+#include <stdio.h>
 
 #ifdef __linux__
 #define getchar getchar_unlocked
 #endif
 
-int main(){
+int main() {
     int arr[26];
     long long ans = 1;
-    for (int i=0; i<26; i++) arr[i] = 0;
+    for (int i = 0; i < 26; i++) arr[i] = 0;
     char c;
-    while ((c=getchar()) != '\n'){
-        arr[c-'a']++;
+    while ((c = getchar()) != '\n') {
+        arr[c - 'a']++;
     }
-    for (int i=0; i<26; i++){
+    for (int i = 0; i < 26; i++) {
         ans *= arr[i] + 1;
-        ans %= (int) 1e9+7;
+        ans %= (int)1e9 + 7;
     }
     printf("%lld\n", ans);
 

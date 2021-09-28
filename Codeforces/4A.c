@@ -1,10 +1,12 @@
 // A. Watermelon
 
-#include<stdio.h>
+#include <stdio.h>
 
 int n;
-int main(){
+int main() {
     scanf("%d", &n);
-    if (n&1 || n == 2) printf("NO\n");
-    else printf("YES\n");
+    if (n & 1 || n == 2)
+        printf("NO\n");
+    else
+        printf("YES\n");
 }

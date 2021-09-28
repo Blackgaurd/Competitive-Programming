@@ -1,6 +1,6 @@
 // Fast Bit Duplication
 
-unsigned long long duplicatebits(unsigned long long x){
+unsigned long long duplicatebits(unsigned long long x) {
     x = (x | (x << 16));
     x &= 281470681808895;
 

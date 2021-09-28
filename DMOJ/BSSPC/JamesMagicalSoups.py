@@ -3,6 +3,7 @@
 # worked during contest bc of terrible test cases LOL
 
 import sys
+
 input = sys.stdin.readline
 
 x, n = map(int, input().split())

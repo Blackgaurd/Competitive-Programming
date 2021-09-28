@@ -1,10 +1,10 @@
 // Mock CCC '20 Contest 1 J2 - A Simplex Problem
 
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 int a, b, c;
-int main(){
+int main() {
     cin >> a >> b >> c;
-    cout << c*max(a, b) << '\n';
+    cout << c * max(a, b) << '\n';
 }

@@ -12,6 +12,6 @@ while code:
     for k, v in mp.items():
         if code.startswith(k):
             ans += v
-            code = code[len(k):]
+            code = code[len(k) :]
 
 print(ans)

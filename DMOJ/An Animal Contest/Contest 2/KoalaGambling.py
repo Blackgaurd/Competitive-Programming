@@ -1,6 +1,7 @@
 # An Animal Contest 2 P4 - Koala Gambling
 
 import sys
+
 input = sys.stdin.readline
 
 t = int(input())
