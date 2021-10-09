@@ -1,4 +1,4 @@
-// 2spooky4me
+// E1. Permutation Minimization by Deque
 
 #include<bits/stdc++.h>
 using namespace std;
@@ -12,23 +12,20 @@ using namespace std;
 char _; bool _sign;
 // clang-format on
 
-const int MM = 1e4+3;
-int n, l, s, psa[MM];
-map<int, int> mp;
-struct trp{
-    int a, b, s;
-} arr[MM];
+int t, n;
+deque<int> q;
 int main(){
-    su(n); su(l); su(s);
-    for (int i=0; i<n; i++){
-        su(arr[i].a);
-        su(arr[i].b);
-        su(arr[i].s);
-        mp[arr[i].a] = 0;
-        mp[arr[i].b] = 0;
-    }
-    for (auto &p: mp){
-        
+    su(t);
+    while (t--){
+        su(n);
+        while (n--){
+            int a; su(a);
+            if (q.empty() || a < q.front()) q.push_front(a);
+            else q.push_back(a);
+        }
+        for (int a: q) printf("%d ", a);
+        printf("\n");
+        q.clear();
     }
 
     return 0;
