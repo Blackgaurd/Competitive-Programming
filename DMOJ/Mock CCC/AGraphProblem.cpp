@@ -14,7 +14,7 @@ int main() {
         sum += a;
         big = max(big, a);
     }
-    cout << (sum - big >= big ? "YES" : "NO") << '\n';
+    cout << (sum - big >= big && !(sum & 1) ? "YES" : "NO") << '\n';
 
     return 0;
 }

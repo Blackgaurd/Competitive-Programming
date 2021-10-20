@@ -26,11 +26,11 @@ struct BIT {
         }
     }
 
-    T get(int ind) { return sum(ind, ind); }
+    T get(int ind) { return query(ind, ind); }
 
     void change(int ind, T val) { add(ind, val - get(ind)); }
 
-    T sum(int r) {
+    T query(int r) {
         T ret = 0;
         while (r >= 0) {
             ret += bit[r];
@@ -39,8 +39,8 @@ struct BIT {
         return ret;
     }
 
-    T sum(int l, int r) {
-        if (l <= 0) return sum(r);
-        return sum(r) - sum(l - 1);
+    T query(int l, int r) {
+        if (l <= 0) return query(r);
+        return query(r) - query(l - 1);
     }
 };
