@@ -14,3 +14,6 @@
 
 # tests
 Tests/
+input.txt
+output.txt
+gen.py

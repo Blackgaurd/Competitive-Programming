@@ -13,22 +13,12 @@ struct BIT {
         bit.assign(n, 0);
     }
 
-    BIT(vector<T> &arr) : BIT(arr.size()) {
-        for (int i = 0; i < n; i++) {
-            add(i, arr[i]);
-        }
-    }
-
-    void add(int ind, T val) {
+    void update(int ind, T val) {
         while (ind < n) {
             bit[ind] += val;
             ind |= (ind + 1);
         }
     }
-
-    T get(int ind) { return query(ind, ind); }
-
-    void change(int ind, T val) { add(ind, val - get(ind)); }
 
     T query(int r) {
         T ret = 0;

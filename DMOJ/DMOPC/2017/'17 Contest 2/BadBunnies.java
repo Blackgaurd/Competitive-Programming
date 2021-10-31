@@ -51,7 +51,7 @@ public class BadBunnies {
 		}
 		int ans = Integer.MAX_VALUE;
 		for (int i=end; i!=-1; i=prev[i]) {
-			ans = Math.min(ans,  dis[i]);
+			ans = Math.min(ans, dis[i]);
 		}
 		System.out.println(ans);
 	}
