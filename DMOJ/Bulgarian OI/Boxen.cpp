@@ -19,10 +19,10 @@ int solve() {
     // take inputs and make graph
     // box with key points to box it can open
     int n;
-    scan(n);
+    su(n);
     for (int i = 1; i <= n; i++) {
         int a;
-        scan(a);
+        su(a);
         adj[a].push_back(i);
     }
     // run bfs

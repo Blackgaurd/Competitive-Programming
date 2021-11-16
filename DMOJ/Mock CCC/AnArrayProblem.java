@@ -1,3 +1,5 @@
+// Mock CCC '18 Contest 2 J3/S1 - An Array Problem
+
 import java.util.*;
 public class AnArrayProblem {
 	public static void main(String[] args) {

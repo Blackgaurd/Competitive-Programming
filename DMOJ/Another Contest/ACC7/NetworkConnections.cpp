@@ -27,18 +27,18 @@ int flead(int x) {
     return p[x];
 }
 int main() {
-    scan(n);
-    scan(m);
+    su(n);
+    su(m);
     for (int i = 1; i <= n; i++) {
         p[i] = i;
-        scan(f[i]);
+        su(f[i]);
         if (i != 1) adj.push_back({i, i - 1, f[i] - f[i - 1]});
     }
 
     for (int i = 1; i <= m; i++) {
         int a, b;
-        scan(a);
-        scan(b);
+        su(a);
+        su(b);
         if (flead(a) != flead(b)) p[flead(a)] = flead(b);
     }
 

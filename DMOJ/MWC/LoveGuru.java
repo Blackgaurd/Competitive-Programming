@@ -1,3 +1,5 @@
+// MWC '15 #1 P5: Love Guru
+
 import java.util.*;
 public class LoveGuru {
 	static int pow(int base, int exp) {
