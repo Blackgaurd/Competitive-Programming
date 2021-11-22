@@ -16,21 +16,11 @@ typedef long long ll;
 const int MM = 1e5 + 3, MOD = 1e9 + 7;
 int n, k, arr[MM];
 ll ans = 0, fact[MM], invfact[MM];
-ll mul_mod(ll __a, ll __b) {
-    ll __ret = 0;
-    while (__a > 0) {
-        if (__a & 1)
-            if ((__ret += __b) > MOD) __ret %= MOD;
-        __a >>= 1;
-        if ((__b <<= 1) > MOD) __b %= MOD;
-    }
-    return __ret;
-}
 ll qpow(ll __a, ll __exp) {
     ll __ret = 1;
     while (__exp > 0) {
-        if (__exp & 1) __ret = mul_mod(__ret, __a);
-        __a = mul_mod(__a, __a);
+        if (__exp & 1) __ret = __ret * __a % MOD;
+        __a = __a * __a % MOD;
         __exp >>= 1;
     }
     return __ret;

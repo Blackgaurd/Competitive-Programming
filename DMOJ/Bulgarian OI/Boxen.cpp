@@ -28,7 +28,7 @@ int solve() {
     // run bfs
     int ans = 0;
     // try and start bfs from every num 1..n
-    set<int> current_path;
+    unordered_set<int> current_path;
     for (int i = 1; i <= n; i++) {
         // if not previously visited
         if (!vis[i]) {

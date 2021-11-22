@@ -1,4 +1,4 @@
-// Back to School '17: New English
+// B. Coloring Rectangles
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -12,38 +12,18 @@ using namespace std;
 char _; bool _sign;
 // clang-format on
 
-const int MM = 1e5 + 3;
-int n, m, cnt[26];
-struct trp {
-    int i, x;
-    char c;
-    bool operator<(const trp &other) {
-        return i < other.i;
-    }
-} arr[MM];
-string t;
+int t, n, m;
 int main() {
     #ifdef PC
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
     #endif
-    su(n);
-    su(m);
-    for (int i = 0; i < m; i++) {
-        sc(arr[i].c);
-        su(arr[i].x);
-        su(arr[i].i);
+    su(t);
+    while (t--) {
+        su(n);
+        su(m);
+        printf("%d\n", (n * m) / 3 + !!(n * m % 3));
     }
-    sort(arr, arr + m);
-    for (int i = 0; i < m; i++) {
-        int &cur = cnt[arr[i].c - 'a'];
-        cur = max(cur, arr[i].x);
-        if (cur > arr[i].i) {
-            printf("-1\n");
-            return 0;
-        }
-    }
-    printf("%s\n", t.c_str());
 
     return 0;
 }

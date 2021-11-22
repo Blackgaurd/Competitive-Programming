@@ -1,6 +1,7 @@
 #include <climits>  // DON'T FORGET THIS
 
 typedef unsigned long long ull;
+typedef long long ll;
 
 ull mul_mod(ull __a, ull __b, ull __mod = ULLONG_MAX) {  // __a * __b % __mod
     ull __ret = 0;
@@ -19,6 +20,18 @@ ull qpow(ull __a, ull __exp, ull __mod = ULLONG_MAX) {  // (__a ^ __exp) % __mod
     while (__exp > 0) {
         if (__exp & 1) __ret = mul_mod(__ret, __a, __mod);
         __a = mul_mod(__a, __a, __mod);
+        __exp >>= 1;
+    }
+    return __ret;
+}
+
+// more efficient qpow but doesn't work for ull
+ll qpow(ll __a, ll __exp, ll __mod = LLONG_MAX) {  // (__a ^ __exp) % __mod
+    if (!__exp) return 1;
+    ll __ret = 1;
+    while (__exp > 0) {
+        if (__exp & 1) __ret = __ret * __a % __mod;
+        __a = __a * __a % __mod;
         __exp >>= 1;
     }
     return __ret;
