@@ -34,17 +34,17 @@ bool dfs(int cur) {
 int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(nullptr);
-    scan(n);
-    scan(m);
+    su(n);
+    su(m);
     int a;
     for (int i = 0; i < m; i++) {
-        scan(a);
+        su(a);
         pho.insert(a);
     }
     for (int i = 0; i < n - 1; i++) {
         int a, b;
-        scan(a);
-        scan(b);
+        su(a);
+        su(b);
         adj[a].pb(b);
         adj[b].pb(a);
     }

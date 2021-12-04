@@ -1,4 +1,5 @@
 // DMOPC '15 Contest 1 P6 - Lelei and Contest
+// imagine using seg tree lol
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -14,42 +15,41 @@ char _; bool _sign;
 
 template <typename T>
 struct BIT {
+#define last(x) (x & (-x))
     vector<T> b1, b2;
     int n;
 
     BIT(int n) {
         this->n = n;
-        b1.assign(n, 0);
-        b2.assign(n, 0);
+        b1.resize(n);
+        b2.resize(n);
     }
-
-    T query(vector<T> &bit, int ind) {
+    T query(const vector<T> &arr, int b) {
         T ret = 0;
-        while (ind >= 0) {
-            ret += bit[ind];
-            ind = (ind & (ind + 1)) - 1;
-        }
+        for (; b; b -= last(b)) ret += arr[b];
         return ret;
     }
-
-    T query(int r) { return query(b1, r) * r - query(b2, r); }
-
-    T query(int l, int r) { return query(r) - query(l - 1); }
-
-    void update(vector<T> &bit, int ind, T val) {
-        while (ind < n) {
-            bit[ind] += val;
-            ind |= ind + 1;
-        }
+    // sum [1..b]
+    T query(int b) {
+        return query(b1, b) * b - query(b2, b);
     }
-
-    void update(int ind, int val) { update(b1, ind, val); }
-
-    void update(int l, int r, T val) {
-        update(b1, l, val);
-        update(b1, r + 1, -val);
-        update(b2, l, val * (l - 1));
-        update(b2, r + 1, -val * r);
+    // sum [i..j]
+    T query(int i, int j) {
+        return query(j) - query(i - 1);
+    }
+    void update(vector<T> &arr, int ind, T val) {
+        for (; ind <= n; ind += last(ind)) arr[ind] += val;
+    }
+    // [i..j] += val
+    void update(int i, int j, T val) {
+        update(b1, i, val);
+        update(b1, j + 1, -val);
+        update(b2, i, val * (i - 1));
+        update(b2, j + 1, -val * j);
+    }
+    // [ind] += val
+    void update(int ind, T val) {
+        update(ind, ind, val);
     }
 };
 
@@ -58,7 +58,7 @@ int main() {
     su(MOD);
     su(n);
     su(q);
-    BIT<int> bit(n + 1);
+    BIT<long long> bit(n + 3);
     for (int i = 1, val; i <= n; i++) {
         su(val);
         bit.update(i, val);
@@ -70,7 +70,7 @@ int main() {
             int l, r;
             su(l);
             su(r);
-            printf("%d\n", bit.query(l, r) % MOD);
+            printf("%lld\n", bit.query(l, r) % MOD);
         } else {
             int l, r, val;
             su(l);

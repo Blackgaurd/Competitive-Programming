@@ -26,8 +26,7 @@ void build(int cur, int tl, int tr) {
         seg[cur] = min(seg[cur * 2], seg[cur * 2 + 1]);
     }
 }
-void update(int cur, int tl, int tr, int pos,
-            int val) {  // update arr[pos] = val
+void update(int cur, int tl, int tr, int pos, int val) {  // update arr[pos] = val
     if (tl == tr)
         seg[cur] = val;
     else {

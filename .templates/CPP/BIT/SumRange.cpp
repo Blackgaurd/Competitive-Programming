@@ -1,64 +1,46 @@
-// 1D Binary Indexed Tree
-// with O(logn) range updates
-// and O(logn) range queries
-// space complexity O(2n)
+// seg tree overrated
+// BIT with range updates
+// creds: https://github.com/kartikkukreja/blog-codes/blob/master/src/Range%20Updates%20%26%20Range%20Queries%20with%20BIT.cpp
 
 #include <bits/stdc++.h>
 using namespace std;
 
 template <typename T>
 struct BIT {
+#define last(x) (x & (-x))
     vector<T> b1, b2;
     int n;
 
     BIT(int n) {
         this->n = n;
-        b1.assign(n, 0);
-        b2.assign(n, 0);
+        b1.resize(n);
+        b2.resize(n);
     }
-
-    // point query on vector 'bit'
-    // use bit = b1 for arr[r]
-    T query(vector<T> &bit, int ind) {
+    T query(const vector<T> &arr, int b) {
         T ret = 0;
-        while (ind >= 0) {
-            ret += bit[ind];
-            ind = (ind & (ind + 1)) - 1;
-        }
+        for (; b; b -= last(b)) ret += arr[b];
         return ret;
     }
-
-    // range query [0..r]
-    T query(int r) { return query(b1, r) * r - query(b2, r); }
-
-    // range query [l..r]
-    T query(int l, int r) { return query(r) - query(l - 1); }
-
-    // point update
-    void update(vector<T> &bit, int ind, T val) {
-        while (ind < n) {
-            bit[ind] += val;
-            ind |= ind + 1;
-        }
+    // sum [1..b]
+    T query(int b) {
+        return query(b1, b) * b - query(b2, b);
     }
-
-    // friendly point update
-    void update(int ind, int val){
-        update(b1, ind, val);
+    // sum [i..j]
+    T query(int i, int j) {
+        return query(j) - query(i - 1);
     }
-
-    // range update [l..r]
-    void update(int l, int r, T val){
-        update(b1, l, val);
-        update(b1, r+1, -val);
-        update(b2, l, val * (l - 1));
-        update(b2, r + 1, -val * r);
+    void update(vector<T> &arr, int ind, T val) {
+        for (; ind <= n; ind += last(ind)) arr[ind] += val;
+    }
+    // [i..j] += val
+    void update(int i, int j, T val) {
+        update(b1, i, val);
+        update(b1, j + 1, -val);
+        update(b2, i, val * (i - 1));
+        update(b2, j + 1, -val * j);
+    }
+    // [ind] += val
+    void update(int ind, T val) {
+        update(ind, ind, val);
     }
 };
-
-int main(){
-    BIT<int> bit(10);
-    bit.update(0, 5, 1);
-    bit.update(bit.b1, 0, 100);
-    cout << bit.query(2) << endl;
-}
