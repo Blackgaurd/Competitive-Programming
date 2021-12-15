@@ -5,7 +5,7 @@
 [![lines of code](https://tokei.rs/b1/github/Blackgaurd/Competitive-Programming?category=code)](https://github.com/Blackgaurd/Competitive-Programming)
 [![files](https://tokei.rs/b1/github/Blackgaurd/Competitive-Programming?category=files)](https://github.com/Blackgaurd/Competitive-Programming)
 
-600+ competitive programming solutions with 24, 000+ lines of code in mainly C++, Python, and Java.
+800+ competitive programming solutions with 29, 000+ lines of code in mainly C++, Python, and Java.
 
 ## DMOJ
 
