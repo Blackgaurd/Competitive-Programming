@@ -6,14 +6,14 @@ using namespace std;
 typedef long long ll;
 typedef pair<ll, ll> pii;
 
-const int MM = 2e5 + 3, MOD = 1e9+7, base1 = 131, base2 = 137;
+const int MM = 2e5 + 3, MOD = 1e9 + 7, base1 = 131, base2 = 137;
 int n;
 string t;
 ll h1[MM], h2[MM], p1[MM], p2[MM];
 hash<ll> hasher;
 void build() {
     p1[0] = p2[0] = 1;
-    for (int i=1; i<=n; i++){
+    for (int i = 1; i <= n; i++) {
         h1[i] = (h1[i - 1] * base1 + t[i - 1]) % MOD;
         p1[i] = p1[i - 1] * base1 % MOD;
         h2[i] = (h2[i - 1] * base2 + t[i - 1]) % MOD;
@@ -26,7 +26,7 @@ ll sub_hash1(int l, int r) {
 ll sub_hash2(int l, int r) {
     return (h2[r] - h2[l - 1] * p2[r - l + 1]) % MOD;
 }
-ll merge_hash(int l, int r){
+ll merge_hash(int l, int r) {
     ll hsh1 = sub_hash1(l, r);
     ll hsh2 = sub_hash2(l, r);
     return hasher(hsh1) ^ hasher(hsh2);
@@ -42,7 +42,8 @@ bool exists(int len) {
 }
 int main() {
     ios_base::sync_with_stdio(0);
-    cin.tie(0); cout.tie(0);
+    cin.tie(0);
+    cout.tie(0);
     cin >> n >> t;
     build();
     int lo = 0, hi = n - 1, ans = -1;
