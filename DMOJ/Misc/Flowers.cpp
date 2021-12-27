@@ -42,12 +42,12 @@ struct BIT {
 
 int n;
 ll ans = 0;
-int main(){
+int main() {
     su(n);
     vector<int> arr(n);
     BIT<ll> bit(n + 1);
-    for (int i=0; i<n; i++) su(arr[i]);
-    for (int i=0; i<n; i++){
+    for (int i = 0; i < n; i++) su(arr[i]);
+    for (int i = 0; i < n; i++) {
         ll a;
         su(a);
         a += bit.query(arr[i]);
