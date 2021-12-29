@@ -15,6 +15,7 @@ Problems found on dmoj.ca. Problems are grouped by contest. The 'Misc' folder ho
 
 Problems found on codeforces.com. Problems are named according to their number on the website. Until I find a better way to organize these I will follow this convention.
 
-## C++ Files
+## Runtimes
 
-Files written to work with c++14 with g++. There are some built-ins used that may not work on other compilers (e.g. `__gcd`).
+- C++17 (g++)
+- Python 3.8.10
