@@ -11,8 +11,9 @@ using namespace std;
 #define sc(x) do{while((x=getchar())<33);}while(0)
 char _; bool _sign;
 // clang-format on
-#define contains(key) (seen.find(key) != seen.end())
-typedef pair<long long, long long> pii;
+typedef long long ll;
+typedef pair<int, int> pii;
+typedef pair<ll, ll> pll;
 
 struct pair_hash {
     template <typename T1, typename T2>
@@ -22,50 +23,48 @@ struct pair_hash {
         return h1 ^ h2;
     }
 };
-int n, m, ans;
-unordered_set<pii, pair_hash> seen;
-vector<pii> arr, slopes;
-void apply_gcd(pii &a){
-    int _gcd = gcd(abs(a.first), abs(a.second));
-    a.first /= _gcd;
-    a.second /= _gcd;
+int n, m;
+ll ans;
+vector<pii> coords;
+unordered_set<pll, pair_hash> slopes;
+unordered_map<ll, int> seen;
+pll gcd(pll cur) {
+    ll _gcd = gcd(abs(cur.first), abs(cur.second));
+    cur.first /= _gcd;
+    cur.second /= _gcd;
+    if (cur.first < 0 && cur.second > 0) {
+        cur.first *= -1;
+        cur.second *= -1;
+    }
+    return cur;
 }
 int main() {
-    #ifdef PC
+#ifdef PC
     freopen("input.txt", "r", stdin);
     freopen("output.txt", "w", stdout);
-    #endif
+#endif
     su(n);
     su(m);
-    arr.resize(n);
+    coords.resize(n);
     for (int i = 0; i < n; i++) {
-        su(arr[i].first);
-        su(arr[i].second);
+        su(coords[i].first);
+        su(coords[i].second);
     }
-    slopes.resize(2 * m);
     for (int i = 0; i < m; i++) {
-        si(slopes[i].second);
-        si(slopes[i].first);
-        slopes[i + m].first = -slopes[i].first;
-        slopes[i + m].second = -slopes[i].second;
-        apply_gcd(slopes[i]);
-        apply_gcd(slopes[i + m]);
+        pll cur;
+        si(cur.first);
+        si(cur.second);
+        cur = gcd(cur);
+        slopes.insert(cur);
     }
-    for (auto p : arr) {
-        cout << "cur: " << p.first << ' ' << p.second << '\n';
-        if (!seen.empty()) {
-            for (auto s : slopes) {
-                pii needed = {s.first + p.first, s.second + p.second};
-                if (p == pii(4, 4) && (s == pii(-1, 1) || s == pii(1, -1))) cout << "needed: " << needed.first << ' ' << needed.second << '\n';
-                apply_gcd(needed);
-                if (seen.find(needed) == seen.end()) continue;
-                cout << "FOUND!!!!!\n" << p.first << ' ' << p.second << ", " << needed.first << ' ' << needed.second << ", " << s.first << ' ' << s.second << '\n';
-            }
+    for (auto [k, d] : slopes) {
+        for (auto [x, y] : coords) {
+            ll cur = k * x - d * y;
+            ans += seen[cur]++;
         }
-        seen.insert(p);
+        seen.clear();
     }
-    for (auto [x, y]: seen) cout << x << ' ' << y << '\n';
-    printf("%d\n", ans);
+    printf("%lld\n", ans);
 
     return 0;
 }
