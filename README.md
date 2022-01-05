@@ -17,5 +17,6 @@ Problems found on codeforces.com. Problems are named according to their number o
 
 ## Runtimes
 
-- C++17 (g++)
+- C++17 (g++ 9.3.0)
 - Python 3.8.10
+- Java 11.0.1
