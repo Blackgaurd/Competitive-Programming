@@ -13,8 +13,11 @@
 *.out
 *.class
 
-# tests
-Tests/
+# io files
 input.txt
 output.txt
+*.in
+
+# tests
+Tests/
 gen.py
