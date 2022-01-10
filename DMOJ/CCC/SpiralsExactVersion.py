@@ -7,6 +7,7 @@ import sys
 
 MM = 101
 
+
 def solve():
     a, b = map(int, input().split())
     arr = [[0 for i in range(MM)] for j in range(MM)]
@@ -55,21 +56,28 @@ def solve():
         for j in range(MM - 1):
             if arr[i][j] != 0:
                 flag = True
-                out += f"{' ' * (len(str(col_max[j])) - len(str(arr[i][j])))}{arr[i][j]} "
-            elif arr[i][j + 1] != 0 and (arr[i + 1][j] != 0 or arr[i-1][j] != 0):
+                out += (
+                    f"{' ' * (len(str(col_max[j])) - len(str(arr[i][j])))}{arr[i][j]} "
+                )
+            elif arr[i][j + 1] != 0 and (arr[i + 1][j] != 0 or arr[i - 1][j] != 0):
                 add_whitespace = True
         if flag:
+            out = out[:-1]
             out += "\n"
 
-    #print(f"{add_whitespace=}")
+    # print(f"{add_whitespace=}")
     longest = len(max(out.split("\n"), key=len))
     for line in out.split("\n")[:-1]:
-        if add_whitespace and len(line) != longest:
-            print(" " * (longest - len(line)), end="")
-        print(line.rstrip())
+        if len(line) != longest:
+            if add_whitespace:
+                line = " " * (longest - len(line)) + line
+            else:
+                line = line + " " * (longest - len(line))
+        print(line)
+
 
 n = int(input())
 for i in range(n):
     solve()
-    if i != n-1:
+    if i != n - 1:
         print()
