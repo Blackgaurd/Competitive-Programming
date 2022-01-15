@@ -1,3 +1,5 @@
+// DMOPC '14 Contest 5 P6 - Save Nagato!
+
 import java.util.*;
 import java.io.*;
 public class SaveNagato {
@@ -14,7 +16,7 @@ public class SaveNagato {
 			adj[u].add(v); adj[v].add(u);
 		}
 		int[] dis1 = new int[n+1], dis2 = new int[n+1];
-		bfs(1, dis1); bfs(last, dis1); bfs(last,dis2);
+		bfs(1, dis1); bfs(last, dis1); bfs(last, dis2);
 		for (int i=1; i<=n; i++) {
 			System.out.println(Math.max(dis1[i], dis2[i]));
 		}

@@ -1,3 +1,5 @@
+// DMOPC '13 Contest 3 P1 - Sharing is Caring
+
 import java.util.*;
 public class SharingIsCaring {
 
@@ -19,7 +21,7 @@ public class SharingIsCaring {
 				System.out.println(docs[j]);
 			}
 		}
-		
+
 	}
 
 }

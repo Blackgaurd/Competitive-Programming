@@ -23,7 +23,8 @@ int main() {
 #endif
     ios_base::sync_with_stdio(0);
     cin.tie(0);
-    su(n); su(m);
+    su(n);
+    su(m);
     for (ll i = 0, ai, bi; i < n; i++) {
         su(ai);
         su(bi);
