@@ -173,7 +173,7 @@ int main(){
     string t;
     io > t;          // read until space
     io >= t;         // read until new line
-    io < t << '\n';  // write with new line
+    io < t < '\n';  // write with new line
 }
 
 */
