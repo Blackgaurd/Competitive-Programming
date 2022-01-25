@@ -1,4 +1,5 @@
-// UTS Open '15 #3 - Pogo
+// Minimizing Coins
+// unlimited knapsack
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -11,3 +12,18 @@ using namespace std;
 #define sc(x) do{while((x=getchar())<33);}while(0)
 char _; bool _sign;
 // clang-format on
+
+int n, x;
+int main() {
+    su(n);
+    su(x);
+    vector<int> dp(x + 1, INT_MAX / 2);
+    dp[0] = 0;
+    for (int i = 0, c; i < n; i++) {
+        su(c);
+        for (int j = c; j <= x; j++) {
+            dp[j] = min(dp[j], dp[j - c] + 1);
+        }
+    }
+    printf("%d\n", dp[x] == INT_MAX / 2 ? -1 : dp[x]);
+}

@@ -29,7 +29,14 @@ int main() {
         su(a);
         su(b);
         su(c);
-        dis[a][b] = dis[b][a] = c;
+        dis[a][b] = dis[b][a] = min((ll)c, dis[a][b]);
+    }
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= n; j++) {
+            for (int k = 1; k <= n; k++) {
+                dis[i][j] = min(dis[i][j], dis[i][k] + dis[k][j]);
+            }
+        }
     }
     for (int i = 1; i <= n; i++) {
         for (int j = 1; j <= n; j++) {

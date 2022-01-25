@@ -3,14 +3,15 @@
 
 #include <bits/stdc++.h>
 using namespace std;
-#define sc(x)                                                                  \
-    do {                                                                       \
-        while ((x = getchar()) < 48)                                           \
-            ;                                                                  \
-        for (x -= 48; 48 <= (_ = getchar()); x = (x << 3) + (x << 1) + _ - 48) \
-            ;                                                                  \
-    } while (0)
-char _;
+// clang-format off
+#ifdef __linux__
+#define getchar getchar_unlocked
+#endif
+#define su(x) do{while((x=getchar())<48); for(x-=48; 48<=(_=getchar()); x=(x<<3)+(x<<1)+_-48);}while(0)
+#define si(x) do{while((x=getchar())<45); _sign=x==45; if(_sign) while((x=getchar())<48); for(x-=48; 48<=(_=getchar()); x=(x<<3)+(x<<1)+_-48); x=_sign?-x:x;}while(0)
+#define sc(x) do{while((x=getchar())<33);}while(0)
+char _; bool _sign;
+// clang-format on
 #define INF 0x3f3f3f3f
 #define ll long long
 using pii = pair<ll, int>;
@@ -78,19 +79,19 @@ bool check_spfa(int x) {
     return dis[b] <= c;
 }
 int main() {
-    sc(n);
-    sc(m);
+    su(n);
+    su(m);
     for (int i = 1; i <= m; i++) {
         int u, v, w;
-        sc(u);
-        sc(v);
-        sc(w);
+        su(u);
+        su(v);
+        su(w);
         adj[u].push_back(edge(v, w, i));
         adj[v].push_back(edge(u, w, i));
     }
-    sc(a);
-    sc(b);
-    sc(c);
+    su(a);
+    su(b);
+    su(c);
 
     int hi = m, lo = 1, ans = 0;
     while (hi >= lo) {
