@@ -1,4 +1,6 @@
 // DMPG '17 G2 - Holy Grail War
+// probably a smarter way than having 2 structs but whatever
+// must take at least one sword
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -14,23 +16,77 @@ char _; bool _sign;
 typedef long long ll;
 
 const int MM = 1e5 + 3;
-int n, q, arr[MM];
-ll kadane(int l, int r) {
-    ll ret = arr[l], cur = arr[l];
-    for (int i = l; i <= r; i++) {
-        cur = max({cur, cur + arr[i], (ll)arr[i]});
-        ret = max(ret, cur);
-    }
+int n, q;
+struct range {
+    int l, r;
+} ranges[MM * 3];
+struct node {
+    ll sum, pref, suff, ans;
+} tree[MM * 3];
+node combine(node left, node right) {
+    node ret;
+    ret.sum = left.sum + right.sum;
+    ret.pref = max(left.pref, left.sum + right.pref);
+    ret.suff = max(right.suff, right.sum + left.suff);
+    ret.ans = max(max(left.ans, right.ans), left.suff + right.pref);
     return ret;
+}
+node make(ll val) {
+    node ret;
+    ret.sum = val;
+    ret.pref = ret.suff = ret.ans = val;
+    return ret;
+}
+void pushup(int ind) {
+    tree[ind] = combine(tree[ind * 2], tree[ind * 2 + 1]);
+}
+void build(int l, int r, int ind) {
+    ranges[ind].l = l;
+    ranges[ind].r = r;
+    if (l == r) {
+        ll val;
+        si(val);
+        tree[ind] = make(val);
+        return;
+    }
+    int mid = (l + r) / 2;
+    build(l, mid, ind * 2);
+    build(mid + 1, r, ind * 2 + 1);
+    pushup(ind);
+}
+void update(int pos, int val, int ind) {
+    if (ranges[ind].l == ranges[ind].r) {
+        tree[ind] = make(val);
+        return;
+    }
+    int mid = (ranges[ind].l + ranges[ind].r) / 2;
+    if (pos <= mid) {
+        update(pos, val, ind * 2);
+    } else {
+        update(pos, val, ind * 2 + 1);
+    }
+    pushup(ind);
+}
+node query(int l, int r, int ind) {
+    if (ranges[ind].l == l && ranges[ind].r == r) {
+        return tree[ind];
+    }
+    int mid = (ranges[ind].l + ranges[ind].r) / 2;
+    if (r <= mid)
+        return query(l, r, ind * 2);
+    else if (l > mid)
+        return query(l, r, ind * 2 + 1);
+    else
+        return combine(query(l, mid, ind * 2), query(mid + 1, r, ind * 2 + 1));
 }
 int main() {
 #ifdef PC
-    freopen("input.txt", "r", stdin);
-    freopen("output.txt", "w", stdout);
+    freopen("HolyGrailWar.in", "r", stdin);
+    freopen("HolyGrailWar.out", "w", stdout);
 #endif
     su(n);
     su(q);
-    for (int i = 1; i <= n; i++) si(arr[i]);
+    build(1, n, 1);
     while (q--) {
         char c;
         int a, b;
@@ -38,9 +94,9 @@ int main() {
         su(a);
         si(b);
         if (c == 'S') {
-            arr[a] = b;
+            update(a, b, 1);
         } else {
-            printf("%lld\n", kadane(a, b));
+            printf("%lld\n", query(a, b, 1).ans);
         }
     }
 }

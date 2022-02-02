@@ -19,7 +19,7 @@ int n, m, d, p[MM];
 struct edge {
     int a, b, w, ind;
 };
-vector<edge> arr, original;
+vector<edge> arr;
 int flead(int x) {
     if (p[x] != x) p[x] = flead(p[x]);
     return p[x];
@@ -31,32 +31,44 @@ int main() {
     for (int i = 1; i <= n; i++) p[i] = i;
 
     arr.resize(m);
-    original.resize(n);
     for (int i = 0; i < m; i++) {
         su(arr[i].a);
         su(arr[i].b);
         su(arr[i].w);
         arr[i].ind = i;
-        if (i < n - 1) original[i] = arr[i];
     }
     sort(arr.begin(), arr.end(), [](edge &a, edge &b) { return a.w == b.w ? a.ind < b.ind : a.w < b.w; });
 
-    int ans = 0;
-    vector<bool> taken(n, false);
+    // pos = last edge that was merged, largest weight bc vector is sorted
+    int ans = 0, pos = 0, i = 0;
     for (auto [a, b, w, ind] : arr) {
         int pa = flead(a), pb = flead(b);
         if (pa != pb) {
             p[pa] = pb;
-            if (ind < n - 1) {
-                taken[ind] = true;
-            } else {
-                ans++;
+            ans += (ind >= n - 1);
+            pos = i;
+        }
+        i++;
+    }
+
+    // largest weight not in original
+    if (arr[pos].ind >= n - 1) {
+        int largest = arr[pos].w;
+        // reset dsu
+        for (int i = 1; i <= n; i++) p[i] = i;
+        for (auto [a, b, w, ind] : arr) {
+            int pa = flead(a), pb = flead(b);
+            if (pa != pb) {
+                if (w < largest)
+                    p[pa] = pb;
+                else if (w == largest && ind < n - 1)
+                    p[pa] = pb;
+                else if (w <= d && ind < n - 1) {
+                    ans--;
+                    break;
+                }
             }
         }
-    }
-    for (auto [a, b, w, ind] : original) {
-        if (taken[ind]) continue;
-        cout << a << ' ' << b << '\n';
     }
     printf("%d\n", ans);
 }

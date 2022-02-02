@@ -21,3 +21,4 @@ output.txt
 # tests
 Tests/
 gen.py
+cube/
