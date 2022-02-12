@@ -12,9 +12,14 @@ using namespace std;
 char _; bool _sign;
 // clang-format on
 
+const int MM = 30005, MN = 1005;
 int n, m, k, x, y, r, b;
-int arr[30003][1003];
+int arr[MM][MN];
 int main() {
+#ifdef PC
+    freopen("Wireless.in", "r", stdin);
+    freopen("Wireless.out", "w", stdout);
+#endif
     su(n);
     su(m);
     su(k);
@@ -23,22 +28,25 @@ int main() {
         su(y);
         su(r);
         su(b);
-        for (int i = max(1, y - r); i <= min(m, y + r); i++) {
+        for (int i = max(1, y - r); i <= min(MM - 1, y + r); i++) {
             int t = i - y;
             int j = sqrt(r * r - t * t);
             arr[i][max(1, x - j)] += b;
-            arr[i][min(n, x + j) + 1] -= b;
+            arr[i][min(MN - 2, x + j) + 1] -= b;
         }
     }
-    for (int i = 1; i <= m; i++) {
-        for (int j = 1; j <= m + 1; j++) {
+    int mx = -1, cnt = 0;
+    for (int i = 1; i <= n; i++) {
+        for (int j = 1; j <= m; j++) {
             arr[i][j] += arr[i][j - 1];
+            if (arr[i][j] > mx) {
+                mx = arr[i][j];
+                cnt = 1;
+            } else if (arr[i][j] == mx)
+                cnt++;
         }
     }
-    for (int i = 1; i <= m; i++) {
-        for (int j = 1; j <= m; j++) cout << arr[i][j] << ' ';
-        cout << '\n';
-    }
+    printf("%d\n%d\n", mx, cnt);
 
     return 0;
 }

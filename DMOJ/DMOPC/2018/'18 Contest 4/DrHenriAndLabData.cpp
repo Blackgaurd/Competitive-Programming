@@ -1,4 +1,5 @@
-// DMOPC '14 Contest 2 P6 - Selective Cutting
+// DMOPC '18 Contest 4 P4 - Dr. Henri and Lab Data
+// this look like Selective Cutting :thinkie:
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -46,19 +47,23 @@ struct BIT {
     }
 };
 
-const int MM = 1e5 + 3;
+const int MM = 2e5 + 3;
 int n, q;
+ll psa[MM];
 pii m[MM];
 struct qry {
-    int l, r, val, ind, ans;
+    int l, r, val, ind;
+    ll ans;
 } queries[MM];
 int main() {
     su(n);
+    su(q);
     for (int i = 0; i < n; i++) {
         su(m[i].first);
         m[i].second = i + 1;
+
+        psa[i + 1] = m[i].first + psa[i];
     }
-    su(q);
     for (int i = 0; i < q; i++) {
         su(queries[i].l);
         su(queries[i].r);
@@ -74,12 +79,14 @@ int main() {
             bit.add(m[mp].second, m[mp].first);
             mp++;
         }
-        queries[qp].ans = bit.sum(queries[qp].l + 1, queries[qp].r + 1);
+        ll ge = bit.sum(queries[qp].l, queries[qp].r);
+        ll ttl = psa[queries[qp].r] - psa[queries[qp].l - 1];
+        queries[qp].ans = 2 * ge - ttl;
         qp++;
     }
 
     sort(queries, queries + q, [](qry &a, qry &b) { return a.ind < b.ind; });
     for (int i = 0; i < q; i++) {
-        printf("%d\n", queries[i].ans);
+        printf("%lld\n", queries[i].ans);
     }
 }

@@ -46,10 +46,10 @@ int check(int x) {
 int main() {
     ios_base::sync_with_stdio(0);
     cin.tie(nullptr);
-    scan(h);
-    for (int i = 0; i < h; i++) scan(houses[i]);
+    su(h);
+    for (int i = 0; i < h; i++) su(houses[i]);
     sort(houses, houses + h);
-    scan(k);
+    su(k);
     int lo = 0, hi = MM, ans = 0;
     while (lo <= hi) {
         int mid = (lo + hi) / 2;

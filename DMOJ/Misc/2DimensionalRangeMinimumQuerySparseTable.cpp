@@ -1,4 +1,5 @@
 // 2-Dimensional Range Minimum Query
+// using sparse table
 
 #include <bits/stdc++.h>
 using namespace std;
