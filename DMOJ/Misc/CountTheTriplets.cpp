@@ -13,7 +13,7 @@ char _; bool _sign;
 // clang-format on
 typedef pair<int, int> pii;
 
-int n, arr[5000], freq[(int)2e6+3];
+int n, arr[5000], freq[(int)2e6 + 3];
 set<pair<int, pii>> ans;
 int main() {
     su(n);
@@ -21,11 +21,11 @@ int main() {
         su(arr[i]);
         freq[arr[i]]++;
     }
-    sort(arr, arr+n);
-    for (int i=0; i<n; i++){
+    sort(arr, arr + n);
+    for (int i = 0; i < n; i++) {
         freq[i]--;
-        for (int j=i+1; j<n; j++){
-            if (freq[arr[i] + arr[j]]){
+        for (int j = i + 1; j < n; j++) {
+            if (freq[arr[i] + arr[j]]) {
                 ans.insert({min(arr[i], arr[j]), {max(arr[i], arr[j]), arr[i] + arr[j]}});
             }
         }
