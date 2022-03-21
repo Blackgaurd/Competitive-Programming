@@ -69,11 +69,6 @@ bool poly_cmp(pii &a, pii &b) {
         return true;
     if (a.first - center.first < 0 && b.first - center.first >= 0)
         return false;
-    if (a.first - center.first == 0 && b.first - center.first == 0) {
-        if (a.second - center.second >= 0 || b.second - center.second >= 0)
-            return a.second > b.second;
-        return b.second > a.second;
-    }
 
     // compute the cross product of vectors (center -> a) x (center -> b)
     double det = (a.first - center.first) * (b.second - center.second) - (b.first - center.first) * (a.second - center.second);

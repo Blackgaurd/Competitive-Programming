@@ -1,4 +1,4 @@
-// DMOPC '19 Contest 3 P3 - Majority
+// DMOPC '16 Contest 1 P5 - Blood Tubes
 
 #include <bits/stdc++.h>
 using namespace std;
@@ -21,15 +21,13 @@ struct BIT {
         n = size;
         bit.assign(n, 0);
     }
-
-    void add(int ind, T val) {
+    void update(int ind, T val) {
         while (ind < n) {
             bit[ind] += val;
             ind |= (ind + 1);
         }
     }
-
-    T sum(int r) {
+    T query(int r) {
         T ret = 0;
         while (r >= 0) {
             ret += bit[r];
@@ -37,30 +35,21 @@ struct BIT {
         }
         return ret;
     }
-
-    T sum(int l, int r) {
-        if (l <= 0)
-            return sum(r);
-        return sum(r) - sum(l - 1);
+    T query(int l, int r) {
+        if (l <= 0) return query(r);
+        return query(r) - query(l - 1);
     }
 };
-
-const int MM = 15e4 + 3;
-int n, arr[MM];
-long long ans = 0;
-BIT<long long> bit(2 * MM);
+long long n, a, ans;
 int main() {
     su(n);
-    bit.add(n + 1, 1);
-    for (int i = 1, a; i <= n; i++) {
+    BIT<int> bit(n + 1);
+    for (int i = 0; i < n; i++) {
         su(a);
-        arr[i] = (a == 1 ? 1 : -1);
-        arr[i] += arr[i - 1];
-        int shift = arr[i] + n + 1;
-        ans += bit.sum(shift - 1);
-        bit.add(shift, 1);
+        int lt = bit.query(a);
+        int gt = i - lt;
+        ans += min(lt, gt);
+        bit.update(a, 1);
     }
     printf("%lld\n", ans);
-
-    return 0;
 }
