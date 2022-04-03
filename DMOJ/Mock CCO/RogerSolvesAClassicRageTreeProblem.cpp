@@ -14,7 +14,7 @@ char _;
 bool _sign;
 
 const int MM = 5e4 + 3;
-int n, q, arr[MM], smin[MM][15], smax[MM][25];
+int n, q, arr[MM], smin[MM][25], smax[MM][25];
 int qlog2(int x) { return 31 - __builtin_clz(x); }
 int query(int l, int r) {
     int j = qlog2(r - l + 1);
