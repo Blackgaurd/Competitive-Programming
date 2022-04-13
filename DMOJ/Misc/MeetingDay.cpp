@@ -47,6 +47,10 @@ int main() {
                 }
             }
         }
+        if (q.back() > cur) {
+            q.push_front(q.back());
+            q.pop_back();
+        }
     }
 
     // reverse
@@ -65,6 +69,10 @@ int main() {
                     inque[nxt] = true;
                 }
             }
+        }
+        if (q.back() > cur) {
+            q.push_front(q.back());
+            q.pop_back();
         }
     }
 

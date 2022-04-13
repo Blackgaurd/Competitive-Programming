@@ -1,4 +1,5 @@
 // 1-dimensional segment tree with range updates
+// using lazy prop
 
 #include <bits/stdc++.h>
 using namespace std;

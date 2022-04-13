@@ -2,70 +2,101 @@
 
 #include <bits/stdc++.h>
 using namespace std;
+typedef long long ll;
 
-long long x = 0;
-struct Func {
-    vector<pair<char, string>> args;
-    unordered_map<string, Func *> funcs;
-    string pass_args = "";
+void mod(ll &a, ll b) {
+    a = (b + (a % b)) % b;
+}
+ll solve() {
+    // parse
+    const ll MOD = 1e9 + 7;
+    int n;
+    cin >> n;
+    vector<pair<char, ll>> instructions;
+    unordered_map<string, int> func_ptr;
+    stack<int> prev_jmp;
+    string cmd, param;
+    int popped = 0;
+    for (int i = 0; i < n; i++) {
+        cin >> cmd;
+        char c = cmd[0];
 
-    void parse(const string &arg) {
-        vector<string> parsed_arg;
-        char *token = strtok(const_cast<char *>(arg.c_str()), " ");
-        while (token != nullptr) {
-            parsed_arg.push_back(string(token));
-            token = strtok(nullptr, " ");
+        if (c != 'E') cin >> param;
+
+        int ptr = i - popped;
+        switch (c) {
+            case 'F':
+                instructions.emplace_back('J', 0);
+                prev_jmp.push(ptr);
+                func_ptr[param] = ptr + 1;
+                break;
+            case 'E':
+                instructions[prev_jmp.top()].second = ptr + 1;
+                prev_jmp.pop();
+                instructions.emplace_back(c, 0);
+                break;
+            case 'C':
+                instructions.emplace_back(c, func_ptr[param]);
+                break;
+            case 'S':
+                instructions.emplace_back('A', -stoi(param));
+                break;
+            default:
+                instructions.emplace_back(c, stoi(param));
         }
 
-        if (parsed_arg[0].front() == 'E') {
-            pass_args = "";
-        } else if (!pass_args.empty()) {
-            funcs[pass_args]->parse(arg);
-        } else if (parsed_arg[0].front() == 'A') {
-            args.emplace_back('+', parsed_arg[1]);
-        } else if (parsed_arg[0].front() == 'S') {
-            args.emplace_back('-', parsed_arg[1]);
-        } else if (parsed_arg[0].front() == 'M') {
-            args.emplace_back('*', parsed_arg[1]);
-        } else if (parsed_arg[0].front() == 'F') {
-            pass_args = parsed_arg[1];
-            funcs[pass_args] = new Func();
-        } else {
-            args.emplace_back('f', parsed_arg[1]);
+        if (instructions.size() < 2) continue;
+        int l = instructions.size();
+        if (instructions[l - 1].first == 'A' && instructions[l - 2].first == 'A') {
+            instructions[l - 2].second += instructions[l - 1].second;
+            mod(instructions[l - 2].second, MOD);
+            instructions.pop_back();
+            popped++;
+        } else if (instructions[l - 1].first == 'M' && instructions[l - 2].first == 'M') {
+            instructions[l - 2].second *= instructions[l - 1].second;
+            mod(instructions[l - 2].second, MOD);
+            instructions.pop_back();
+            popped++;
         }
     }
 
-    void exec(){
-        for (auto arg: args){
-            if (arg.first == '+'){
-                x += stoll(arg.second);
-            }
-            else if (arg.first == '-'){
-                x -= stoll(arg.second);
-            }
-            else if (arg.first == '*'){
-                x *= stoll(arg.second);
-            }
-            else {
-                funcs[arg.second]->exec();
-            }
-            x %= int(1e9+7);
+    // execute
+    ll x = 0;
+    list<int> call_stack;
+    call_stack.push_front(0);
+    while (call_stack.front() < int(instructions.size())) {
+        auto [c, v] = instructions[call_stack.back()];
+        switch (c) {
+            case 'J':
+                call_stack.back() = v;
+                break;
+            case 'A':
+                x += v;
+                call_stack.back()++;
+                mod(x, MOD);
+                break;
+            case 'M':
+                x *= v;
+                call_stack.back()++;
+                mod(x, MOD);
+                break;
+            case 'C':
+                call_stack.push_back(v);
+                break;
+            case 'E':
+                call_stack.pop_back();
+                call_stack.back()++;
+                break;
         }
     }
-
-    void print(){
-        printf("%lld\n", x);
-        x = 0;
-    }
-};
-
+    return x;
+}
 int main() {
-    Func start = Func();
-    int n; cin >> n;
-    for (; n--;){
-        string t; getline(cin, t);
-        start.parse(t);
+    ios_base::sync_with_stdio(0);
+    cin.tie(0);
+    int t;
+    cin >> t;
+    while (t--) {
+        cout << solve() << '\n';
     }
-    start.exec();
-    start.print();
 }

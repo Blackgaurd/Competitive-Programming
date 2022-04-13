@@ -1,48 +1,81 @@
 # ECOO '20 P4 - Ring
-# compiled not interpreted
 
-x = 0
 
-class Function:
-    def __init__(self) -> None:
-        self.args = []
-        self.funcs = {}
-        self.pass_args = ""
-
-    def parse(self, arg):
-        if arg[0][0] == 'E':
-            self.pass_args = ""
-        elif self.pass_args:
-            self.funcs[self.pass_args].parse(arg)
-        elif arg[0][0] == 'A':
-            self.args.append(('+', int(arg[1])))
-        elif arg[0][0] == 'S':
-            self.args.append(('-', int(arg[1])))
-        elif arg[0][0] == 'M':
-            self.args.append(('*', int(arg[1])))
-        elif arg[0][0] == 'F':
-            self.pass_args = arg[1]
-            self.funcs[arg[1]] = Function()
+def parse():
+    n = int(input())
+    instructions = []
+    func_ptr = {}
+    prev_jmp = []
+    popped = 0
+    for i in range(n):
+        line = input()
+        ptr = i - popped
+        if line[0] == "F":
+            instructions.append(["JMP"])
+            prev_jmp.append(ptr)
+            func_ptr[line.split()[-1]] = ptr + 1
+        elif line[0] == "E":
+            instructions[prev_jmp[-1]].append(ptr + 1)
+            line += " 0"
+            prev_jmp.pop()
+            instructions.append(line.split())
+        elif line[0] == "C":
+            a, b = line.split()
+            instructions.append([a, func_ptr[b]])
         else:
-            self.args.append(('f', arg[1]))
+            instructions.append(line.split())
 
-    def execute(self):
-        global x
-        for arg in self.args:
-            if arg[0] == '+':
-                x += arg[1]
-            elif arg[0] == '-':
-                x -= arg[1]
-            elif arg[0] == '*':
-                x *= arg[1]
-            else:
-                self.funcs[arg[1]].execute()
-        x %= 1000000007
+        # compress instructions
+        if len(instructions) >= 2:
+            if instructions[-1][0] == "ADD" and instructions[-2][0] == "ADD" or instructions[-1][0] != "ADD" and instructions[-1][0] == "SUB" and instructions[-2][0] != "ADD" and instructions[-2][0] == "SUB":
+                instructions[-2][1] = int(instructions[-2][1]) + int(instructions[-1][1])
+                instructions[-2][1] %= int(1e9) + 7
+                instructions.pop()
+                popped += 1
+            elif instructions[-1][0] == "ADD" and instructions[-2][0] == "SUB":
+                instructions[-2][0] = "ADD"
+                instructions[-2][1] = -int(instructions[-2][1]) + int(instructions[-1][1])
+                instructions[-2][1] %= int(1e9) + 7
+                instructions.pop()
+                popped += 1
+            elif instructions[-1][0] != "ADD" and (instructions[-1][0] != "SUB" or instructions[-2][0] == "ADD") and instructions[-1][0] == "SUB":
+                instructions[-2][1] = int(instructions[-2][1]) - int(instructions[-1][1])
+                instructions[-2][1] %= int(1e9) + 7
+                instructions.pop()
+                popped += 1
+            elif instructions[-1][0] == instructions[-2][0] == "MULT":
+                instructions[-2][1] = int(instructions[-2][1]) * int(instructions[-1][1])
+                instructions[-2][1] %= int(1e9) + 7
+                instructions.pop()
+                popped += 1
+    return instructions
 
-for i in range(int(input())):
-    main = Function()
+
+def execute(instructions):
     x = 0
-    for j in range(int(input())):
-        main.parse(input().split())
-    main.execute()
-    print(x)
+    call_stack = [0]
+    while call_stack[0] < len(instructions):
+        ins, param = instructions[call_stack[-1]]
+        if ins[0] == "J":
+            call_stack[-1] = int(param)
+        elif ins[0] == "A":
+            x += int(param)
+            call_stack[-1] += 1
+            x %= int(1e9) + 7
+        elif ins[0] == "S":
+            x -= int(param)
+            call_stack[-1] += 1
+        elif ins[0] == "M":
+            x *= int(param)
+            call_stack[-1] += 1
+            x %= int(1e9) + 7
+        elif ins[0] == "C":
+            call_stack.append(param)
+        elif ins[0] == "E":
+            call_stack.pop()
+            call_stack[-1] += 1
+    return x
+
+
+for t in range(int(input())):
+    print(execute(parse()))

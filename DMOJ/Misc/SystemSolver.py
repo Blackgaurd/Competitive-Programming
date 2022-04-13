@@ -1,45 +1,80 @@
 # System Solver
-# proof of concept in python
 
 from math import gcd as __gcd
-import sys
+from functools import reduce
 
-# TODO: handle edge cases n != m
-
+# n = variables
+# m = equations
 n, m = map(int, input().split())
-if m < n:
-    print("NO UNIQUE SOLUTION")
-    sys.exit(0)
 
 augmented = []
 for i in range(m):
-    arr = list(map(int, input().split()))
+    cur = list(map(int, input().split()))
 
-    gcd = __gcd(*arr)
+    # reduce equation to lowest terms
+    gcd = reduce(__gcd, cur)
     if gcd != 1:
-        for j in range(n + 1):
-            arr[j] //= gcd
+        for elem in range(len(cur)):
+            cur[elem] //= gcd
 
+    # check if equation already exists
     for other in augmented:
-        if all(arr[j] == other[j] for j in range(n)):
-            print("NO UNIQUE SOLUTION")
-            sys.exit(0)
+        if cur == other:
+            break
+    else:
+        augmented.append(cur)
 
-    augmented.append(arr)
 
-for i in range(m):
-    row1 = augmented[i]
-    for j in range(i + 1, m):
-        row2 = augmented[j]
-        constant = row2[i] / row1[i]
-        for k in range(m + 1):
-            row2[k] -= constant * row1[k]
+def eq(a, b):
+    EPS = 1e-6
+    return abs(a - b) < EPS
 
-ans = [None for i in range(n)]
-for i in range(m - 1, -1, -1):
-    row = augmented[i]
-    for j in range(i + 1, n):
-        row[-1] -= row[j] * ans[j]
-    ans[i] = row[-1] / row[i]
 
-print(*ans, sep="\n")
+def solve(a):
+    n = len(a)
+    m = len(a[0]) - 1
+
+    where = [-1 for i in range(m)]
+
+    col = 0
+    row = 0
+    while col < m and row < n:
+        sel = row
+        for i in range(row, n):
+            if abs(a[i][col]) > abs(a[sel][col]):
+                sel = i
+        if eq(a[sel][col], 0):
+            col += 1
+            continue
+        for i in range(col, m + 1):
+            a[sel][i], a[row][i] = a[row][i], a[sel][i]
+        where[col] = row
+
+        for i in range(n):
+            if i == row:
+                continue
+            c = a[i][col] / a[row][col]
+            for j in range(col, m + 1):
+                a[i][j] -= a[row][j] * c
+        col += 1
+        row += 1
+
+    ans = [0 for i in range(m)]
+    for i in range(m):
+        if where[i] != -1:
+            ans[i] = a[where[i]][m] / a[where[i]][i]
+    for i in range(n):
+        ttl = sum(ans[j] * a[i][j] for j in range(m))
+        if not eq(ttl, a[i][m]):
+            return 0, []
+
+    if any(where[i] == -1 for i in range(m)):
+        return 2, []
+    return 1, ans
+
+
+res, ans = solve(augmented)
+if res == 1:
+    print(*ans, sep="\n")
+else:
+    print("NO UNIQUE SOLUTION")
