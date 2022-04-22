@@ -5,7 +5,6 @@
 // aims to support:
 // point update
 // range query
-// TODO: add lazy prop
 
 struct node {
     int val, l, r;
@@ -37,7 +36,7 @@ void update(int pos, int val, node *cur) {  // call by using cur=root
     }
     pushup(cur);
 }
-int query(int l, int r, node* cur){
+int query(int l, int r, node *cur){
     if (cur == nullptr) {
         return 0;
     }

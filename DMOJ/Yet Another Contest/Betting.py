@@ -2,7 +2,4 @@
 
 for t in range(int(input())):
     a, b, c, d = map(int, input().split())
-    if a >= b or c >= d or b / a == d / c:
-        print("NO")
-    else:
-        print("YES")
+    print("YES" if a * d < b * (d - c) else "NO")
