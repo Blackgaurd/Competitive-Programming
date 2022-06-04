@@ -4,6 +4,8 @@
 # don't know whats going on? me neither
 # search up MNIST dataset to get started
 
+# trained on custom MLP (no libraries)
+
 import math
 import sys
 input = sys.stdin.readline

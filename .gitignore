@@ -23,3 +23,4 @@ Tests/
 gen.py
 cube/
 levvesegtree/
+Pipfile.lock

@@ -1,4 +1,4 @@
-# pls no steal
+# trained on custom MLP (no libraries)
 
 import math
 import sys
@@ -116,4 +116,3 @@ for _ in range(int(input())):
     a1 = relu(add(dot(w1, inputs), b1))
     a2 = sofm(add(dot(w2, a1), b2))
     print(argm(a2))
-    
