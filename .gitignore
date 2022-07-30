@@ -23,4 +23,5 @@ Tests/
 gen.py
 cube/
 levvesegtree/
+kkspheres/
 Pipfile.lock

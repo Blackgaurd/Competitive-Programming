@@ -1,9 +1,13 @@
 # New Year's '18 P2 - Mimi and Christmas Cake
 
+from array import array
+
 n = int(input())
 
 MM = int(1e5) + 3
-prime = [True for i in range(MM)]
+prime = array('i')
+for i in range(MM):
+    prime.append(True)
 prime[1] = False
 for i in range(4, MM, 2):
     prime[i] = False
