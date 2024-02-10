@@ -1,6 +1,7 @@
 // Levve Loves Segment Trees
 
-#include <bits/stdc++.h>
+#include <cstdio>
+#include <algorithm>
 using namespace std;
 typedef long long ll;
 // clang-format off
@@ -83,8 +84,8 @@ int main() {
         sc(c);
         su(a);
         su(b);
-        a ^= last_ans;
-        b ^= last_ans;
+        // a ^= last_ans;
+        // b ^= last_ans;
         if (c == 'C') {
             update(a, b, 1, n, 0);
         } else if (c == 'S') {
